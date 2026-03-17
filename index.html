@@ -1,35 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SF Crime Visualizations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF Crime: Two Decades of Data</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: #2a1433;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            font-family: 'Playfair Display', serif;
+            width: 100%;
+            padding: 4rem 1.5rem 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2a1433, #1a0d21);
+            border-bottom: 1px solid rgba(22, 199, 154, 0.25);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f5f5f5;
+        }
+
+        header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: #d9d9d9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: #341b40;
+            border: 1px solid rgba(22, 199, 154, 0.25);
+            border-radius: 14px;
+            padding: 1.4rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-color: #16c79a;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: #16c79a;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #dddddd;
+            margin-bottom: 1rem;
+        }
+
+        .card a {
+            color: #16c79a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 3rem 1rem 2.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>SF Crime: Two Decades of Data</h1>
+        <p>
+            This portfolio explores patterns in San Francisco crime data across more than twenty years, combining static and interactive visualizations.
+            It highlights how crime varies over time, space, and category, with a focus on clear storytelling through data.
+        </p>
+    </header>
 
-    <h1>San Francisco Crime Visualizations</h1>
-    <p>This site collects our static and interactive visualizations.</p>
+    <main class="container">
+        <section class="card-grid">
+            <div class="card">
+                <h2>Yearly Crime Trends</h2>
+                <p>A static overview of how selected crime categories changed from 2003 to 2025.</p>
+                <a href="images/yearly_crime_trends.svg" target="_blank">View visualization</a>
+            </div>
 
-    <h2>Static figure</h2>
-    <img src="images/yearly_crime_trends.svg" alt="yearly_crime_trends" width="700">
+            <div class="card">
+                <h2>Daily Theft Patterns</h2>
+                <p>An interactive Plotly chart showing how theft incidents evolve day by day.</p>
+                <a href="visualizations/Theft_incidents_daily_interactive.html" target="_blank">Open chart</a>
+            </div>
 
-    <h2>Interactive Plotly chart (Daily Theft Incidents)</h2>
-    <p><a href="visualizations/Theft_incidents_daily_interactive.html" target="_blank">
-        Open the interactive chart
-    </a></p>
+            <div class="card">
+                <h2>Hourly Crime Activity</h2>
+                <p>An interactive view of crime variation across the hours of the day.</p>
+                <a href="visualizations/crime_hourly_interactive.html" target="_blank">Open chart</a>
+            </div>
 
-    <h2>Interactive Plotly chart (Hourly Crime)</h2>
-    <p><a href="visualizations/crime_hourly_interactive.html" target="_blank">
-        Open the hourly chart
-    </a></p>
+            <div class="card">
+                <h2>Additional Interactive Plot</h2>
+                <p>An extra interactive visualization for exploring another crime-related pattern.</p>
+                <a href="visualizations/temp-plot.html" target="_blank">Open chart</a>
+            </div>
 
-    <h2>Interactive Plotly chart</h2>
-    <p><a href="visualizations/temp-plot.html" target="_blank">
-        Open the chart
-    </a></p>
-
-    <h2>Folium Map</h2>
-    <p><a href="visualizations/sf_prostitution_heatmap.html" target="_blank">
-        Open the map
-    </a></p>
-
+            <div class="card">
+                <h2>SF Prostitution Heatmap</h2>
+                <p>A Folium map showing the spatial concentration of prostitution-related incidents in the city.</p>
+                <a href="visualizations/sf_prostitution_heatmap.html" target="_blank">Open map</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
