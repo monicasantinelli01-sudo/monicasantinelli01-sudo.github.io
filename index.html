@@ -77,6 +77,7 @@
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      z-index: 3;
     }
 
     .scroll-line {
@@ -111,6 +112,88 @@
       color: #f6f2eb;
     }
 
+
+    .map-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .map-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 1;
+    }
+
+    .map-overlay {
+      position: relative;
+      z-index: 2;
+      width: min(380px, 82vw);
+      margin-right: 0;
+      padding: 1.6rem;
+      background: #241733;
+      color: #f6f2eb;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+      opacity: 0;
+      transform: translateX(180px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .map-overlay h2,
+    .map-overlay p {
+      opacity: 0;
+      transform: translateY(-24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .map-overlay h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .map-overlay p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .map-section.visible .map-overlay {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .map-section.visible .map-overlay h2 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+    }
+
+    .map-section.visible .map-overlay p {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.35s;
+    }
+
+    @media (max-width: 900px) {
+      .map-section {
+        justify-content: center;
+        padding: 2rem 0;
+      }
+
+      .map-overlay {
+        width: min(420px, 92vw);
+        border-radius: 8px;
+      }
+    }
+
     @media (max-width: 700px) {
       .hero {
         padding: 10vh 8vw 5vh 8vw;
@@ -126,6 +209,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <section class="hero">
@@ -146,10 +230,44 @@
     </a>
   </section>
 
+  <section id="content" class="map-section">
+    <iframe 
+      src="visualizations/sf_prostitution_heatmap.html" 
+      class="map-frame"
+      loading="lazy">
+    </iframe>
+
+    <div class="map-overlay">
+      <h2>Spatial concentration</h2>
+      <p>
+        Here you can describe what the heatmap shows, for example where prostitution-related incidents are most concentrated and how the pattern changes over time.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const mapSection = document.querySelector('.map-section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          mapSection.classList.add('visible');
+        } else {
+          mapSection.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(mapSection);
+  </script>
+
+</section>
+
   <section id="content" class="next-section">
     <h2>More content here</h2>
     <p>Add your cards, charts, links, and visualizations in this section.</p>
   </section>
+
 
 </body>
 </html>
