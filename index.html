@@ -1,153 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SF Crime: Two Decades of Data</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prostitution in San Francisco</title>
 
-        body {
-            font-family: 'Playfair Display', serif;
-            background: #2a1433;
-            color: #f5f5f5;
-            line-height: 1.6;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
-        header {
-            font-family: 'Playfair Display', serif;
-            width: 100%;
-            padding: 4rem 1.5rem 3rem;
-            text-align: center;
-            background: linear-gradient(135deg, #2a1433, #1a0d21);
-            border-bottom: 1px solid rgba(22, 199, 154, 0.25);
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #f5f5f5;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        header p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-            color: #d9d9d9;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: #efdaf6cb;
+      color: #2c1733;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 3rem;
-        }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vh 10vw 4vh 10vw;
+      position: relative;
+    }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-        }
+    .hero-content {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
-        .card {
-            background: #341b40;
-            border: 1px solid rgba(22, 199, 154, 0.25);
-            border-radius: 14px;
-            padding: 1.4rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
+    .hero-tag {
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #692d72d6;
+      margin-bottom: 2rem;
+    }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            border-color: #16c79a;
-        }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+    }
 
-        .card h2 {
-            font-size: 1.2rem;
-            margin-bottom: 0.6rem;
-            color: #16c79a;
-        }
+    .hero p {
+      font-size: clamp(1rem, 1vw, 1.2rem);
+      text-align: left;
+      margin: 0 auto;
+      line-height: 1.8;
+      max-width: 850px;
+      color: #422a45;
+    }
 
-        .card p {
-            font-size: 0.95rem;
-            color: #dddddd;
-            margin-bottom: 1rem;
-        }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #692d72d6;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
 
-        .card a {
-            color: #16c79a;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: rgba(46, 23, 51, 0.2);
+      margin-top: 14px;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .card a:hover {
-            text-decoration: underline;
-        }
+    .scroll-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 1px;
+      height: 28px;
+      background: #2c1733;
+      animation: scrollMove 1.6s ease-in-out infinite;
+    }
 
-        @media (max-width: 600px) {
-            header {
-                padding: 3rem 1rem 2.5rem;
-            }
+    @keyframes scrollMove {
+      0%   { top: 0; opacity: 0.2; }
+      50%  { top: 30px; opacity: 1; }
+      100% { top: 0; opacity: 0.2; }
+    }
 
-            header h1 {
-                font-size: 2rem;
-            }
+    .next-section {
+      min-height: 100vh;
+      padding: 100px 10vw;
+      background: #241733;
+      color: #f6f2eb;
+    }
 
-            header p {
-                font-size: 1rem;
-            }
+    @media (max-width: 700px) {
+      .hero {
+        padding: 10vh 8vw 5vh 8vw;
+      }
 
-            .container {
-                padding: 1.5rem 1rem 2.5rem;
-            }
-        }
-    </style>
+      .hero p {
+        line-height: 1.7;
+      }
+
+      .scroll-indicator {
+        bottom: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>SF Crime: Two Decades of Data</h1>
-        <p>
-            This portfolio explores patterns in San Francisco crime data across more than twenty years, combining static and interactive visualizations.
-            It highlights how crime varies over time, space, and category, with a focus on clear storytelling through data.
-        </p>
-    </header>
 
-    <main class="container">
-        <section class="card-grid">
-            <div class="card">
-                <h2>Yearly Crime Trends</h2>
-                <p>A static overview of how selected crime categories changed from 2003 to 2025.</p>
-                <a href="images/yearly_crime_trends.svg" target="_blank">View visualization</a>
-            </div>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">About</div>
+      <h1>Prostitution in San Francisco</h1>
+      <p>
+        On the following website, Prostitution as a crime category was analyzed in San Francisco. 
+        The data sources for the subsequent visuals are two official datasets from the San Francisco Police Department (SFPD). 
+        One covers the time from 2003 to 2018 and the other is covering the period from 2018 until the end of 2025. 
+        The datasets were merged and our group aligned on specifically elaborating how the crime patterns of Prostitution changed within the above-mentioned time period.
+      </p>
+    </div>
 
-            <div class="card">
-                <h2>Daily Theft Patterns</h2>
-                <p>An interactive Plotly chart showing how theft incidents evolve day by day.</p>
-                <a href="visualizations/Theft_incidents_daily_interactive.html" target="_blank">Open chart</a>
-            </div>
+    <a href="#content" class="scroll-indicator">
+      Scroll
+      <div class="scroll-line"></div>
+    </a>
+  </section>
 
-            <div class="card">
-                <h2>Hourly Crime Activity</h2>
-                <p>An interactive view of crime variation across the hours of the day.</p>
-                <a href="visualizations/crime_hourly_interactive.html" target="_blank">Open chart</a>
-            </div>
+  <section id="content" class="next-section">
+    <h2>More content here</h2>
+    <p>Add your cards, charts, links, and visualizations in this section.</p>
+  </section>
 
-            <div class="card">
-                <h2>Additional Interactive Plot</h2>
-                <p>An extra interactive visualization for exploring another crime-related pattern.</p>
-                <a href="visualizations/temp-plot.html" target="_blank">Open chart</a>
-            </div>
-
-            <div class="card">
-                <h2>SF Prostitution Heatmap</h2>
-                <p>A Folium map showing the spatial concentration of prostitution-related incidents in the city.</p>
-                <a href="visualizations/sf_prostitution_heatmap.html" target="_blank">Open map</a>
-            </div>
-        </section>
-    </main>
 </body>
 </html>
