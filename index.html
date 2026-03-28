@@ -105,14 +105,6 @@
       100% { top: 0; opacity: 0.2; }
     }
 
-    .next-section {
-      min-height: 100vh;
-      padding: 100px 10vw;
-      background: #241733;
-      color: #f6f2eb;
-    }
-
-
     .map-section {
       position: relative;
       min-height: 100vh;
@@ -141,7 +133,6 @@
       color: #f6f2eb;
       border-radius: 8px 0 0 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
       opacity: 0;
       transform: translateX(180px);
       transition: opacity 0.8s ease, transform 0.8s ease;
@@ -182,32 +173,179 @@
       transition-delay: 0.35s;
     }
 
-    @media (max-width: 900px) {
-      .map-section {
-        justify-content: center;
-        padding: 2rem 0;
-      }
+  .trends-section {
+    position: relative;
+    min-height: 600vh;
+    background: #241733;
+  }
 
-      .map-overlay {
-        width: min(420px, 92vw);
-        border-radius: 8px;
-      }
+  .left-panel {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3vw 0 6vw;
+    z-index: 2;
+  }
+
+  .overall-overview,
+  .trend-text-card {
+    position: absolute;
+    max-width: 430px;
+    color: #f6f2eb;
+  }
+
+  .overall-overview {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .trends-section.intro-visible .overall-overview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .trends-section.has-active-step .overall-overview {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  .overall-overview h2,
+  .trend-text-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .overall-overview p,
+  .trend-text-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .trend-text-card {
+    opacity: 0;
+    transform: translateY(90px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    pointer-events: none;
+  }
+
+  .trend-text-card.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .trends-image-wrap {
+    position: sticky;
+    top: 0;
+    margin-left: 45%;
+    width: 55%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 4vh 4vw 4vh 0;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(120px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .trends-section.intro-visible .trends-image-wrap {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .trends-image {
+    width: 92%;
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .highlight-box {
+    position: absolute;
+    border: 3px solid #efdaf6cb;
+    background: rgba(239, 218, 246, 0.08);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(120px);
+    transition:
+      left 0.45s ease,
+      top 0.45s ease,
+      width 0.45s ease,
+      height 0.45s ease,
+      opacity 0.45s ease,
+      transform 0.55s ease;
+  }
+
+  .highlight-box.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .trends-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .intro-trigger,
+  .trend-trigger {
+    height: 100vh;
+  }
+
+  @media (max-width: 900px) {
+    .trends-section {
+      min-height: auto;
+      display: block;
+      padding: 3rem 1.2rem;
     }
 
-    @media (max-width: 700px) {
-      .hero {
-        padding: 10vh 8vw 5vh 8vw;
-      }
-
-      .hero p {
-        line-height: 1.7;
-      }
-
-      .scroll-indicator {
-        bottom: 28px;
-      }
+    .left-panel,
+    .trends-image-wrap {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      padding: 0;
+      opacity: 1;
+      transform: none;
     }
-  </style>
+
+    .trends-image {
+      width: 100%;
+      max-height: none;
+      margin-bottom: 2rem;
+    }
+
+    .highlight-box,
+    .trends-progress {
+      display: none;
+    }
+
+    .overall-overview,
+    .trend-text-card {
+      position: relative;
+      opacity: 1;
+      transform: none;
+      margin-bottom: 1.2rem;
+      max-width: none;
+      pointer-events: auto;
+    }
+
+    .trends-section.has-active-step .overall-overview {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -245,29 +383,144 @@
     </div>
   </section>
 
-  <script>
-    const mapSection = document.querySelector('.map-section');
+  <section id="trends" class="trends-section">
+  <div class="left-panel">
+    <div class="overall-overview">
+      <h2>Overall overview</h2>
+      <p>
+        The following figure summarizes yearly prostitution-related incidents across five police districts in San Francisco. Scrolling down highlights each subplot one by one and introduces the main pattern visible in that district.
+      </p>
+    </div>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          mapSection.classList.add('visible');
-        } else {
-          mapSection.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.35 });
+    <div class="trend-text-card" data-step="0">
+      <h2>First subplot</h2>
+      <p>
+        The first bar chart introduces the long-term evolution of prostitution-related incidents and gives a general overview of how the category changes across the years.
+      </p>
+    </div>
 
-    observer.observe(mapSection);
-  </script>
+    <div class="trend-text-card" data-step="1">
+      <h2>Second subplot</h2>
+      <p>
+        Here you can explain the second bar chart and what stands out most clearly, such as a peak, a decline, or a stable period.
+      </p>
+    </div>
 
+    <div class="trend-text-card" data-step="2">
+      <h2>Third subplot</h2>
+      <p>
+        Use this space to describe the third chart and connect it to a broader interpretation of how the phenomenon developed over time.
+      </p>
+    </div>
+
+    <div class="trend-text-card" data-step="3">
+      <h2>Fourth subplot</h2>
+      <p>
+        This text can highlight another important phase in the data, for example a sudden drop or a visible transition in the yearly counts.
+      </p>
+    </div>
+
+    <div class="trend-text-card" data-step="4">
+      <h2>Fifth subplot</h2>
+      <p>
+        In the last chart, summarize the final stage of the trend and mention what this tells us about prostitution incidents in recent years.
+      </p>
+    </div>
+  </div>
+
+  <div class="trends-image-wrap">
+    <img src="images/yearly_Prostitution_trends.png" alt="Yearly prostitution trends" class="trends-image">
+    <div class="highlight-box"></div>
+  </div>
+
+  <div class="trends-progress">
+    <div class="intro-trigger"></div>
+    <div class="trend-trigger" data-step="0"></div>
+    <div class="trend-trigger" data-step="1"></div>
+    <div class="trend-trigger" data-step="2"></div>
+    <div class="trend-trigger" data-step="3"></div>
+    <div class="trend-trigger" data-step="4"></div>
+  </div>
 </section>
 
-  <section id="content" class="next-section">
-    <h2>More content here</h2>
-    <p>Add your cards, charts, links, and visualizations in this section.</p>
-  </section>
+<script>
+  const trendsSection = document.querySelector('.trends-section');
+  const trendCards = document.querySelectorAll('.trend-text-card');
+  const highlightBox = document.querySelector('.highlight-box');
+  const trendsImage = document.querySelector('.trends-image');
 
+  function clearActiveStep() {
+    trendCards.forEach(card => card.classList.remove('active'));
+    trendsSection.classList.remove('has-active-step');
+    highlightBox.classList.remove('active');
+  }
+
+  function setHighlightGeometry(step) {
+    if (!highlightBox || !trendsImage || window.innerWidth <= 900) return;
+
+    const imgWidth = trendsImage.offsetWidth;
+    const imgHeight = trendsImage.offsetHeight;
+    const imgLeft = trendsImage.offsetLeft;
+    const imgTop = trendsImage.offsetTop;
+
+    const horizontalInset = imgWidth * 0.10;   // same left/right spacing
+    const highlightWidth = imgWidth - 2 * horizontalInset;
+    const subplotHeight = imgHeight / 5;
+
+    highlightBox.style.left = `${imgLeft + horizontalInset}px`;
+    highlightBox.style.width = `${highlightWidth}px`;
+    highlightBox.style.top = `${imgTop + step * subplotHeight}px`;
+    highlightBox.style.height = `${subplotHeight}px`;
+  }
+
+  function setActiveStep(step) {
+    trendsSection.classList.add('has-active-step');
+
+    trendCards.forEach((card, index) => {
+      card.classList.toggle('active', index === step);
+    });
+
+    setHighlightGeometry(step);
+    highlightBox.classList.add('active');
+  }
+
+  function updateTrendsState() {
+    const sectionTop = trendsSection.offsetTop;
+    const sectionHeight = trendsSection.offsetHeight;
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+
+    const entered = scrollY + viewportHeight * 0.7 > sectionTop && scrollY < sectionTop + sectionHeight;
+    trendsSection.classList.toggle('intro-visible', entered);
+
+    if (!entered || window.innerWidth <= 900) {
+      clearActiveStep();
+      return;
+    }
+
+    const localProgress = scrollY - sectionTop;
+
+    // first screen in this section: overview + image only
+    if (localProgress < viewportHeight * 0.85) {
+      clearActiveStep();
+      return;
+    }
+
+    // after that: first subplot appears and rectangle comes from bottom
+    const adjusted = localProgress - viewportHeight * 0.85;
+    const step = Math.max(0, Math.min(4, Math.floor(adjusted / viewportHeight)));
+
+    setActiveStep(step);
+  }
+
+  window.addEventListener('scroll', updateTrendsState);
+  window.addEventListener('resize', () => {
+    updateTrendsState();
+  });
+  window.addEventListener('load', () => {
+    updateTrendsState();
+  });
+</script>
 
 </body>
 </html>
