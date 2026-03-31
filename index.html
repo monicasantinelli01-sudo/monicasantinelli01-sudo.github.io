@@ -20,7 +20,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #efdaf6cb;
+      background: #c59aae79; 
       color: #2c1733;
     }
 
@@ -179,7 +179,7 @@
 
     .trends-scroll-section {
       position: relative;
-      height: 1200vh;
+      height: 1600vh;
       background: #241733;
       overflow: visible;
     }
@@ -253,12 +253,13 @@
       width: 100%;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(36px);
+      transform: translateY(18px);
       transition:
-        opacity 0.9s ease,
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-        visibility 0s linear 0.9s;
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        visibility 0s linear 0.55s;
       pointer-events: none;
+      will-change: opacity, transform;
     }
 
     .district-copy.active {
@@ -266,8 +267,8 @@
       visibility: visible;
       transform: translateY(0);
       transition:
-        opacity 0.9s ease,
-        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.55s ease,
+        transform 0.55s ease,
         visibility 0s linear 0s;
     }
 
@@ -319,6 +320,33 @@
       height: 100%;
     }
 
+    .highlight-box {
+      position: absolute;
+      background: rgba(239, 218, 246, 0.08);
+      border: 3px solid #efdaf6cb;
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0;
+      will-change: left, top, width, height, opacity;
+      transition:
+        left 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+    }
+
+    .zoom-plot-shell {
+      position: absolute;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      overflow: hidden;
+      background: transparent;
+      will-change: opacity, left, top, width, height;
+    }
+
     .full-figure-shell {
       position: absolute;
       width: 25vw;
@@ -330,9 +358,10 @@
       z-index: 1;
       opacity: 0;
       transition:
-        opacity 1.2s ease,
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: 0.22s;
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: 0.1s;
+      will-change: opacity, transform;
     }
 
     .full-figure-shell.revealed {
@@ -350,34 +379,8 @@
       display: block;
     }
 
-    .highlight-box {
-      position: absolute;
-      background: rgba(239, 218, 246, 0.08);
-      border: 3px solid #efdaf6cb;
-      z-index: 4;
-      pointer-events: none;
-      opacity: 0;
-      transition:
-        left 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        top 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        width 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        height 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.5s ease;
-    }
-
     .highlight-box.visible {
       opacity: 1;
-    }
-
-    .zoom-plot-shell {
-      position: absolute;
-      z-index: 3;
-      opacity: 0;
-      transition: opacity 0.9s ease;
-      transition-delay: 0.16s;
-      pointer-events: none;
-      overflow: hidden;
-      background: transparent;
     }
 
     .zoom-plot-shell.visible {
@@ -630,10 +633,6 @@
       height: 48
     };
 
-    let displayedSequenceState = -1;
-    let targetSequenceState = -1;
-    let sequenceTimer = null;
-
     function setRect(el, rect) {
       el.style.left = rect.left + '%';
       el.style.top = rect.top + '%';
@@ -655,33 +654,66 @@
       if (target) target.classList.add('active');
     }
 
-    function clearSequenceTimer() {
-      if (sequenceTimer) {
-        clearTimeout(sequenceTimer);
-        sequenceTimer = null;
+    let currentStage = -1;
+    let ticking = false;
+    let stageLocked = false;
+    let pendingStage = null;
+    const STAGE_TRANSITION_MS = 600;
+
+    function goToStage(targetStage) {
+      if (targetStage === currentStage) return;
+
+      if (stageLocked) {
+        pendingStage = targetStage;
+        return;
       }
+
+      stageLocked = true;
+
+      if (targetStage > currentStage) {
+        currentStage += 1;
+      } else {
+        currentStage -= 1;
+      }
+
+      if (currentStage === -1) {
+        showIntroState();
+      } else {
+        showDistrictState(currentStage);
+      }
+
+      setTimeout(() => {
+        stageLocked = false;
+
+        if (pendingStage !== null && pendingStage !== currentStage) {
+          const next = pendingStage;
+          pendingStage = null;
+          goToStage(next);
+        } else {
+          pendingStage = null;
+        }
+      }, STAGE_TRANSITION_MS);
     }
 
-    function resetVisuals() {
-      clearSequenceTimer();
-      displayedSequenceState = -1;
-      targetSequenceState = -1;
+
+    function showIntroState() {
       highlightBox.classList.remove('visible');
       zoomPlotShell.classList.remove('visible');
       fullFigureShell.classList.remove('dimmed');
       showCopy('intro');
     }
 
-    function applySequenceState(state) {
+    function showDistrictState(state) {
       const isZoomState = state % 2 === 1;
       const districtIndex = Math.floor(state / 2);
+
+      showCopy(districtIndex);
 
       if (!isZoomState) {
         setRect(highlightBox, subplotRects[districtIndex]);
         highlightBox.classList.add('visible');
         zoomPlotShell.classList.remove('visible');
         fullFigureShell.classList.remove('dimmed');
-        showCopy(districtIndex);
       } else {
         zoomPlotImage.src = detailImages[districtIndex];
         setRect(highlightBox, zoomRect);
@@ -689,42 +721,54 @@
         highlightBox.classList.add('visible');
         zoomPlotShell.classList.add('visible');
         fullFigureShell.classList.add('dimmed');
-        showCopy(districtIndex);
       }
     }
 
-    function stepTowardsTarget() {
-      if (displayedSequenceState === targetSequenceState) {
-        sequenceTimer = null;
-        return;
+    function updateScrollScene() {
+        const sectionRect = trendsSection.getBoundingClientRect();
+        const viewportH = window.innerHeight;
+        const scrollable = trendsSection.offsetHeight - viewportH;
+
+        let progress = 0;
+        if (scrollable > 0) {
+          progress = Math.min(Math.max(-sectionRect.top / scrollable, 0), 1);
+        }
+
+        const introEnd = 0.12;
+        const sequenceStart = 0.16;
+        const totalStages = 10;
+
+        let desiredStage = -1;
+
+        if (progress >= introEnd) {
+          const sequenceProgress = Math.min(
+            Math.max((progress - sequenceStart) / (1 - sequenceStart), 0),
+            0.999999
+          );
+          desiredStage = Math.floor(sequenceProgress * totalStages);
+        }
+
+        goToStage(desiredStage);
+
+        ticking = false;
       }
 
-      if (displayedSequenceState < targetSequenceState) {
-        displayedSequenceState += 1;
-      } else {
-        displayedSequenceState -= 1;
+    function requestTick() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateScrollScene);
       }
-
-      applySequenceState(displayedSequenceState);
-      sequenceTimer = setTimeout(stepTowardsTarget, 320);
     }
 
-    function setTargetSequenceState(newTarget) {
-      if (newTarget === targetSequenceState) return;
-      targetSequenceState = newTarget;
-
-      if (!sequenceTimer) {
-        stepTowardsTarget();
-      }
-    }
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick);
+    window.addEventListener('load', requestTick);
 
     const trendsEntranceObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          introCopy.classList.add('active');
           fullFigureShell.classList.add('revealed');
         } else {
-          introCopy.classList.remove('active');
           fullFigureShell.classList.remove('revealed');
         }
       });
@@ -734,34 +778,8 @@
     });
 
     trendsEntranceObserver.observe(trendsSection);
-
-    function updateScrollScene() {
-      const sectionRect = trendsSection.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-      const scrollable = trendsSection.offsetHeight - viewportH;
-
-      let progress = 0;
-      if (scrollable > 0) {
-        progress = Math.min(Math.max(-sectionRect.top / scrollable, 0), 1);
-      }
-
-      if (progress < 0.22) {
-        resetVisuals();
-        return;
-      }
-
-      const sequenceProgress = (progress - 0.22) / (1 - 0.22);
-      const clampedSequence = Math.min(Math.max(sequenceProgress, 0), 0.9999);
-      const totalSequenceStates = 10;
-      const targetState = Math.floor(clampedSequence * totalSequenceStates);
-
-      setTargetSequenceState(targetState);
-    }
-
-    window.addEventListener('scroll', updateScrollScene, { passive: true });
-    window.addEventListener('resize', updateScrollScene);
-    window.addEventListener('load', updateScrollScene);
-  </script>
+    
+</script>
 
 </body>
 </html>
