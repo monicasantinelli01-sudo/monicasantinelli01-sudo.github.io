@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prostitution in San Francisco</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
@@ -20,8 +20,44 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #c59aae79; 
-      color: #2c1733;
+      color: #c59aae79; 
+      background: #2c1733;
+    }
+
+    /* =========================
+       GLOBAL LINK + CITATION STYLE
+       ========================= */
+
+    a {
+      color: inherit;
+    }
+
+    sup {
+      line-height: 0;
+    }
+
+    sup a {
+      text-decoration: none;
+      color: #b672c1;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72em;
+      font-weight: 500;
+      margin-left: 0.12em;
+      transition: opacity 0.25s ease;
+    }
+
+    sup a:hover {
+      opacity: 0.75;
+      text-decoration: underline;
+    }
+
+    /* Optional: if you want citation color lighter on dark backgrounds */
+    .map-overlay sup a,
+    .district-copy sup a,
+    .intro-copy sup a,
+    .closing-stage sup a,
+    .references-section sup a {
+      color: #efdaf6cb;
     }
 
     .hero {
@@ -43,7 +79,7 @@
       font-size: 0.95rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #692d72d6;
+      color: #c59aae79;
       margin-bottom: 2rem;
     }
 
@@ -53,15 +89,17 @@
       line-height: 0.95;
       font-weight: 500;
       margin-bottom: 1.8rem;
+      color: #f6f2eb;
     }
 
     .hero p {
+      font-family: 'Poppins', sans-serif;
       font-size: clamp(1rem, 1vw, 1.2rem);
       text-align: left;
       margin: 0 auto;
       line-height: 1.8;
       max-width: 850px;
-      color: #422a45;
+      color: #f6f2eb;
     }
 
     .scroll-indicator {
@@ -73,7 +111,7 @@
       flex-direction: column;
       align-items: center;
       text-decoration: none;
-      color: #692d72d6;
+      color: #c59aae79;
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -95,7 +133,7 @@
       left: 0;
       width: 1px;
       height: 28px;
-      background: #2c1733;
+      background: #c59aae79;
       animation: scrollMove 1.6s ease-in-out infinite;
     }
 
@@ -129,7 +167,7 @@
       width: min(380px, 82vw);
       margin-right: 0;
       padding: 1.6rem;
-      background: #241733;
+      background: #2c1733;
       color: #f6f2eb;
       border-radius: 8px 0 0 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
@@ -152,6 +190,7 @@
     }
 
     .map-overlay p {
+      font-family: 'Poppins', sans-serif;
       font-size: 0.92rem;
       line-height: 1.65;
     }
@@ -180,7 +219,7 @@
     .trends-scroll-section {
       position: relative;
       height: 1600vh;
-      background: #241733;
+      background: #2c1733;
       overflow: visible;
     }
 
@@ -188,7 +227,7 @@
       position: sticky;
       top: 0;
       min-height: 100vh;
-      background: #241733;
+      background: #2c1733;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -209,15 +248,22 @@
       color: #f6f2eb;
       align-self: center;
       padding-right: 4vw;
-      min-height: 360px;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .trends-kicker {
+      font-family: 'Poppins', sans-serif;
       font-size: 0.92rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #692d72d6;
+      color: #c59aae79;
       margin-bottom: 1.4rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .trends-heading {
@@ -227,21 +273,29 @@
       font-weight: 500;
       margin-bottom: 1.5rem;
       color: #f6f2eb;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .overview-text {
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       line-height: 1.85;
-      max-width: 500px;
+      max-width: 700px;
       color: #f6f2eb;
       opacity: 0.95;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .district-copy-stack {
       position: absolute;
-      inset: 50% auto auto 0;
-      transform: translateY(-50%);
-      width: min(520px, 90%);
+      left: 50%;
+      top: 10%;
+      transform: translate(-50%, -50%);
+      width: min(720px, 92%);
       pointer-events: none;
       z-index: 2;
     }
@@ -278,32 +332,47 @@
       font-weight: 700;
       margin-bottom: 1rem;
       color: #f6f2eb;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .district-copy p {
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       line-height: 1.8;
-      max-width: 520px;
+      max-width: 700px;
       color: #f6f2eb;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .district-copy.show-body p {
       opacity: 0.96;
+      transform: translateY(0);
+      transition-delay: 0.12s;
     }
 
-    .intro-copy .trends-heading {
-      margin-bottom: 1.5rem;
-    }
-
-    .intro-copy .overview-text {
-      max-width: 500px;
+    .intro-copy p {
+      font-family: 'Poppins', sans-serif;
+      opacity: 0.96;
+      transform: translateY(0);
+      text-align: center;
+      color: #f6f2eb;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .intro-copy h2 {
       color: #f6f2eb;
     }
-    .intro-copy p{
-      color: #f6f2eb;
-    }
-    .intro-copy .trends-kicker {
-      color: #efdaf6cb;
+
+    .intro-copy .overview-text {
+      max-width: 700px;
     }
 
     .trends-visual-side {
@@ -394,6 +463,145 @@
       display: block;
     }
 
+    /* =========================
+       FOURTH SECTION
+       ========================= */
+
+    .closing-scroll-section {
+      position: relative;
+      height: 700vh;
+      background: #2c1733;
+    }
+
+    .closing-sticky {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12vh 8vw;
+      background: #2c1733;
+      overflow: hidden;
+    }
+
+    .closing-stage-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .closing-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        visibility 0s linear 0.55s;
+      will-change: opacity, transform;
+      pointer-events: none;
+    }
+
+    .closing-stage.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        visibility 0s linear 0s;
+    }
+
+    .closing-question h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 3.6vw, 3.9rem);
+      line-height: 0.96;
+      font-weight: 500;
+      color: #f6f2eb;
+      max-width: 850px;
+    }
+
+    .closing-paragraph h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      line-height: 1.1;
+      font-weight: 600;
+      color: #f6f2eb;
+      margin-bottom: 1rem;
+      max-width: 760px;
+    }
+
+    .closing-paragraph p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #f6f2eb;
+      opacity: 0.95;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* =========================
+       REFERENCES SECTION
+       ========================= */
+
+    .references-section {
+      background: #2c1733;
+      color: #f6f2eb;
+      padding: 10vh 8vw 12vh 8vw;
+      border-top: 1px solid rgba(239, 218, 246, 0.15);
+    }
+
+    .references-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .references-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      color: #f6f2eb;
+    }
+
+    .references-list {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
+
+    .references-list li {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: #f6f2eb;
+    }
+
+    .references-list a {
+      color: #efdaf6cb;
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+
+    .references-list a:hover {
+      opacity: 0.8;
+    }
+
     @media (max-width: 1100px) {
       .trends-layout {
         grid-template-columns: 1fr;
@@ -408,10 +616,11 @@
 
       .district-copy-stack {
         position: relative;
-        inset: auto;
+        left: auto;
+        top: auto;
         transform: none;
         width: 100%;
-        min-height: 180px;
+        min-height: 260px;
       }
 
       .district-copy {
@@ -451,13 +660,23 @@
       }
 
       .district-copy p,
-      .overview-text {
+      .overview-text,
+      .closing-paragraph p,
+      .references-list li {
         line-height: 1.7;
       }
 
       .full-figure-shell {
         min-width: 260px;
         width: 58vw;
+      }
+
+      .closing-sticky {
+        padding: 10vh 8vw;
+      }
+
+      .references-section {
+        padding: 8vh 8vw 10vh 8vw;
       }
     }
   </style>
@@ -470,10 +689,10 @@
       <div class="hero-tag">About</div>
       <h1>Prostitution in San Francisco</h1>
       <p>
-        On the following website, Prostitution as a crime category was analyzed in San Francisco.
-        The data sources for the subsequent visuals are two official datasets from the San Francisco Police Department (SFPD).
-        One covers the time from 2003 to 2018 and the other is covering the period from 2018 until the end of 2025.
-        The datasets were merged and our group aligned on specifically elaborating how the crime patterns of Prostitution changed within the above-mentioned time period.
+        Prostitution as a crime category is analyzed in the area of San Francisco.
+        The data sources are two official datasets from the San Francisco Police Department <sup><a href="#ref1">1</a></sup>.
+        One covers the time from 2003 to 2018 and the other covers the period from 2018 until the end of 2025.
+        The datasets are merged and the focus is on how the crime patterns of Prostitution changed within the above-mentioned time period.
       </p>
     </div>
 
@@ -493,7 +712,8 @@
     <div class="map-overlay">
       <h2>Spatial concentration</h2>
       <p>
-        Here you can describe what the heatmap shows, for example where prostitution-related incidents are most concentrated and how the pattern changes over time.
+        As shown in the heatmap, prostitution-related incidents are most concentrated in the districts Central, Northern, Southern, Tenderloin and Mission.
+        The heatmap also reveals how these patterns have evolved over the years: the trends show a gradual reduction in the intensity of the hotspots, especially in the later years of the period.
       </p>
     </div>
   </section>
@@ -509,9 +729,9 @@
               <div class="trends-kicker">District patterns</div>
               <h2 class="trends-heading">Yearly prostitution trends by police district</h2>
               <p class="overview-text">
-                This figure combines the yearly prostitution-related trends for five districts.
-                As you scroll, each subplot is highlighted in sequence and then expanded into its own panel,
-                making it easier to compare local trajectories and shifts over time.
+                We will be looking more into details at these five districts.
+                Following, an analysis of the reasons which could have led to the decrease of prostitution incidents
+                and the shift of prostitution clusters towards the Mission District within that period.
               </p>
             </div>
 
@@ -520,38 +740,54 @@
               <p>
                 The Southern district shows a moderate level of incidents for much of the period,
                 followed by a sharp local peak in the mid-2010s and then a strong decline.
+                Thinking of the social and economic factors, the district made a massive demographic and constructive change in the last decades.
+                It went from an industrial environment with warehouses and plants to a global technology center.
+                This led to a significant gentrification, increasing housing costs and the displacement of working-class citizens in that part of the town<sup><a href="#ref2">2,</a></sup><sup><a href="#ref3">3</a></sup>.
+                Moreover, the district did undergo a big change in terms of urban densification based on the Transit Center District Plan of 2012 which resulted in a higher portion of skyscrapers within the district<sup><a href="#ref4">4</a></sup>.
+                In terms of criminality, mainly areas near the Market street, between the 5th and 10th street have a high crime concentration including prostitution, drugs and violence<sup><a href="#ref5">5</a></sup><sup><a href="#ref6">6</a></sup>.
               </p>
             </div>
 
             <div class="district-copy" data-copy="1">
               <h3>Tenderloin</h3>
               <p>
-                Add here your interpretation of the Tenderloin subplot. You can describe the early
-                concentration of incidents, subsequent decline, and the timing of the strongest peaks.
+                Since the early 2000s Tenderloin remained one of the most criminal districts in San Francisco.
+                In contrast to other districts, gentrification did not take place as extensively.
+                Tenderloin is also associated with poverty, homelessness, drug activity, and prostitution-related incidents<sup><a href="#ref7">7</a></sup><sup><a href="#ref8">8</a></sup><sup><a href="#ref9">9</a></sup>.
+                As later mentioned also in the Northern district section, especially areas near Polk Street were likely to be involved in crimes linked to Prostitution. 
+                Moreover, the district is connected to acute poverty as a high portion of the citizens is living in single room occupancy hotels <sup><a href="#ref10">10</a></sup>.
               </p>
             </div>
 
             <div class="district-copy" data-copy="2">
               <h3>Central</h3>
               <p>
-                Add here your interpretation of the Central subplot. Use this space to comment on
-                the magnitude of incidents and how the district evolves compared with the others.
+                The Central district saw major demographic change from 2000 to 2015, with rising living costs contributing to the displacement of lower-income residents<sup><a href="#ref11">11</a></sup>.
+                Historically, prostitution activity was also pushed away from the central core toward nearby districts such as Tenderloin<sup><a href="#ref12">12</a></sup>.
+                Thus, in the recent past, the main tasks of the police department these days are the management of parades and major events and managing property-related crimes like theft or burglary<sup><a href="#ref13">13</a></sup>.
               </p>
             </div>
 
             <div class="district-copy" data-copy="3">
               <h3>Northern</h3>
               <p>
-                Add here your interpretation of the Northern subplot. This can focus on its relatively
-                high earlier values and the later transition toward much lower annual counts.
+                The Northern district was one of the historical hotspots of prostitution-related incidents. 
+                Areas around Polk Street and nearby corridors were repeatedly associated with sex work in the first decade of the 2000s<sup><a href="#ref14">14</a></sup>.
+                It is to be noted that Northern shares a border with the Tenderloin district mainly along Polk Street and Larkin Street.
+                However the Northern district also experienced a big demographic and social shift. In the period 2000-2015, the district lost a high portion of low-income black households due to increasing housing prices<sup><a href="#ref15">15</a></sup>.
+                The district also includes the area of the city called Fisherman’s Wharf, which is a popular tourist destination and has a high concentration of hotels, restaurants, and entertainment venues. 
+                This could be one of the reasons why prostitution-related activity in that district decreased over time, as the area became more commercialized and less accessible for street-based prostitution.
               </p>
             </div>
 
             <div class="district-copy" data-copy="4">
               <h3>Mission</h3>
               <p>
-                Add here your interpretation of the Mission subplot. This final step can highlight
-                both the large early counts and the longer-term reduction over time.
+                Mission shows remained one of the districts where prostitution-related activity continued to appear more persistently than in several other parts of the city.
+                Recent reporting describes a shift of visible street prostitution within the district rather than a disappearance of the activity. 
+                After Capp Street was closed to through traffic in February 2023, nearby residents reported that “the same problems have instead moved to their doorsteps” and one resident said, “When the barriers went up … all the prostitution moved to Shotwell.”<sup><a href="#ref16">16</a></sup>.
+                In response, the city announced additional barriers on Shotwell, visible public cameras, and the Dear John program, under which SFPD said it had begun sending letters and pictures to the addresses of registered vehicle owners seen and captured on camera soliciting prostitution along Shotwell and surrounding streets.<sup><a href="#ref17">17</a></sup>
+                The purpose was to discourage potential clients from going to the area and to reduce the demand for prostitution, but as said from residents, the effect was the opposite as the activity just shifted to nearby corridors and streets.<sup><a href="#ref18">18</a></sup>
               </p>
             </div>
           </div>
@@ -587,6 +823,176 @@
     </div>
   </section>
 
+  <section class="closing-scroll-section" id="closing-scroll">
+    <div class="closing-sticky">
+      <div class="closing-stage-wrap">
+        <div class="closing-stage closing-question" data-stage="question">
+          <h2>The question is: what's the real story behind the decrease in prostitution in San Francisco?</h2>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p1">
+          <p>
+            What needs to be noted is that the decrease in prostitution-related incidents in San Francisco does not necessarily indicate a reduction in the actual prevalence of prostitution.
+            The lower reported incidents may reflect changes in law enforcement priorities, reporting practices, or the displacement of prostitution to other areas or online platforms.
+          </p>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p2">
+          <h3>Shift toward online solicitation</h3>
+          <p>
+            Some of the long decline in reported street prostitution may also reflect a broader move toward online solicitation. 
+            PBS reported in 2010 that Craigslist removed its adult-services ads, and Cunningham and Kendall describe the rise of “institutions that facilitate prostitution online.” 
+            A 2011 TIME article likewise described sex workers shifting from Craigslist to Facebook. (Source?) Moreover, a report from KALW argues that San Francisco's tech boom and gentrification 
+            did not really reduce sex work but instead restructured it along class lines, pushing wealthier clients and workers to online platforms while leaving the poorer individuals on the streets.
+          </p>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p3">
+          <h3>Changes in policing strategy and priorities</h3>
+          <p>
+            There were various changes in policing strategies in the time period from 2017 to 2025. In 2017, the SFPD released a Department Bulletin which changed the behaviour of the Police regarding Prostitution incidents. 
+            In the document, it was stated that all forms of sex workers who are witnesses or victims of violent crimes like assault, trafficking, stalking, robbery, kidnapping, extortion, etc. cannot be arrested due to prostitution incidents. 
+            It was also stated that officers who misbehave in the contact with sex workers will face disciplinary consequences. 
+            Another legal change was the Safer Streets Act from 2022 which changed the behaviour regarding loitering. In this senate bill it was stated that it is no longer possible to convict someone for being suspected of intent to engage in prostitution. 
+            Additionally, people which were previously convicted under the loitering law could now petition for dismissal and sealing of their records. 
+            Furthermore, any minors which were arrested for prostitution-related offenses were automatically presumed a victim, not as criminals.
+            These legal adjustments were influencing the crime statistics directly after their release. For instance, in the first half of 2023, solicitation charges against clients made up nearly 80% of all prostitution-related incidents.
+          </p>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p4">
+          <h3>Legal framework and statistical effects</h3>
+          <p>
+            Part of the drop in reported prostitution incidents may reflect changes in the legal framework, not only changes in the underlying activity. 
+            Local News Matters wrote that “Prior to 2023, police could arrest suspected prostitutes under the state’s anti-loitering law, which has since been repealed” and that “Loitering arrests accounted for 65 percent of all citations related to sex work in the past five years".
+            This means that part of the decline in official prostitution incidents may come from changes in what police were allowed to stop, cite, and arrest.
+          </p>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p5">
+          <h3>Programs and debate</h3>
+          <p>
+            During the investigated time period, various organizations and programs were trying to make an influence on the legislation, supporting sex workers or preventing Johns from soliciting sex workers in the future. 
+            For instance, the US PROS Collective is still fighting for the decriminalization of prostitution and aims for protection, justice and resources to prevent people of being forced into sex work due to poverty or violence. (https://uspros.net/about/ ) 
+            Moreover, programs like “John Schools” are focusing on preventing further contacts after initial solicitation. 
+            Johns, after being convicted, have to join virtual courses which are providing information regarding potential health risks, sex trafficking education and legal consequences.
+            However, there was some criticism regarding these “John School” initiatives. For instance, Local and Jordan were claiming that the decrease in prostitution incidents actually began two years before the program was implemented and that the study never measured actual participants. 
+            Therefore, the authors are stating that there is no actual evidence that these programs reduce re-offending numbers.
+          </p>
+        </div>
+
+        <div class="closing-stage closing-paragraph" data-stage="p6">
+          <h3>The Whac-A-Mole Effect: displacement rather than disappearance</h3>
+          <p>
+            Recent reporting shows that street-level prostitution in the Mission was not simply removed, but pushed between nearby streets. 
+            Mission Local wrote that after Capp Street was closed to through traffic, “the same problems have instead moved to their doorsteps,” and NBC Bay Area reported that “the prostitution problem was pushed a few blocks down” to Shotwell Street. 
+            Later coverage in the San Francisco Standard said residents feared new barriers on Shotwell would “just move the problem” again, while Mission Local quoted a resident saying, “all it’s going to do is move the sex workers from this street over to some new street, just like it did from Capp.” 
+            This supports a measured reading of the data: lower counts in one corridor do not automatically mean the activity is gone, only that its visible geography may have changed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="references-section" id="references">
+    <div class="references-inner">
+      <h2 class="references-title">References</h2>
+      <ol class="references-list">
+        <li id="ref1">
+          <a href="https://data.sfgov.org/browse?category=Public+Safety&sortBy=relevance&page=1&pageSize=20" target="_blank" rel="noopener noreferrer">
+            Data source: San Francisco Police Department crime data (2003-2018 and 2018-2025)
+          </a>
+        </li>
+        <li id="ref2">
+          <a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">
+            Rising Housing Costs and Re-Segregation in San Francisco, UC Berkeley’s Urban Displacement Project and the California Housing Partnership
+          </a>
+        </li>
+        <li id="ref3">
+          <a href="https://5743rdstcentralapartments.com/2025/01/28/the-soma-district-from-industrial-hub-to-tech-center/" target="_blank" rel="noopener noreferrer">
+            third source
+          </a>
+        </li>
+        <li id="ref4">
+          <a href="https://www.structuremag.org/article/salesforce-tower/" target="_blank" rel="noopener noreferrer">
+            fourth source
+          </a>
+        </li>
+        <li id="ref5">
+          <a href="https://www.inside-guide-to-san-francisco-tourism.com/san-francisco-crime.html#:~:text=Violent%20crimes%20are%20concentrated%20in,other%20cities%2C%20especially%20U.S%20ones" target="_blank" rel="noopener noreferrer">
+            fifth source
+          </a>
+        </li>
+        <li id="ref6">
+          <a href="https://www.businessinsider.com/prostitution-homelessness-and-drugs-surround-twitters-new-hq-2014-3" target="_blank" rel="noopener noreferrer">
+            sixth source
+          </a>
+        </li>
+        <li id="ref7">
+          <a href="https://www.kqed.org/news/11665527/why-hasnt-the-tenderloin-gentrified-like-the-rest-of-san-francisco#:~:text=The%20Tenderloin%20has%20some%20long%2Dstanding%20problems:%20*,programs%20*%20Housing%20projects%20*%20Fancier%20restaurants" target="_blank" rel="noopener noreferrer">
+            Tenderloin Gentrification
+          </a>
+        </li>
+        <li id="ref8">
+          <a href="https://apnews.com/article/san-francisco-tenderloin-drugs-children-7ae668d1050363170514ca057589ec1e" target="_blank" rel="noopener noreferrer">
+            eighth source
+          </a>
+        </li>
+        <li id="ref9">
+          <a href="https://abc7news.com/post/sf-tenderloin-drug-arrests-narcan-homeless/11535735/" target="_blank" rel="noopener noreferrer">
+            ninth source
+          </a>
+        </li>
+        <li id="ref10">
+          <a href="https://www.yesmagazine.org/economy/2015/08/25/how-san-francisco-tenderloin-immune-gentrification" target="_blank" rel="noopener noreferrer">
+            tenth source
+          </a>
+        </li>
+        <li id="ref11">
+          <a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/gentrification.pdf" target="_blank" rel="noopener noreferrer">
+            11th source - Central district gentrification and prostitution displacement, UC Berkeley’s Urban Displacement Project and the California Housing Partnership\
+          </a>
+        </li>
+        <li id="ref12">
+          <a href="https://en.wikipedia.org/wiki/Tenderloin,_San_Francisco" target="_blank" rel="noopener noreferrer">
+            12th source
+          </a>
+        </li>
+        <li id="ref13">
+          <a href="https://www.sf.gov/sites/default/files/2025-01/SFPD%20Boundary%20Analysis%20Project%20Report%20December%202024.pdf" target="_blank" rel="noopener noreferrer">
+            13th source
+          </a>
+        </li>
+        <li id="ref14">
+          <a href="https://www.sfgate.com/bayarea/article/Prostitution-disturbs-Polk-Gulch-2623614.php" target="_blank" rel="noopener noreferrer">
+            14th source
+          </a>
+        </li>
+        <li id="ref15">
+          <a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">
+            15th source
+          </a>
+        </li>
+        <li id="ref16">
+          <a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">
+            16th source
+          </a>
+        </li>
+        <li id="ref17">
+          <a href="https://www.sanfranciscopolice.org/news/sfpd-launches-dear-john-program-reduce-prostitution-and" target="_blank" rel="noopener noreferrer">
+            "San Francisco Police Department, *SFPD Launches Dear John Program to Reduce Prostitution and Human Trafficking*, November 13, 2024"
+          </a>
+        </li>
+        <li id="ref18">
+          <a href="https://www.sfchronicle.com/sf/article/sex-prostitution-mission-san-francisco-20784778.php" target="_blank" rel="noopener noreferrer">
+            18th source
+          </a>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
   <script>
     const mapSection = document.querySelector('.map-section');
 
@@ -609,6 +1015,20 @@
     const zoomPlotImage = document.getElementById('zoomPlotImage');
     const introCopy = document.querySelector('.intro-copy');
     const districtCopies = document.querySelectorAll('.district-copy');
+
+    const closingScrollSection = document.getElementById('closing-scroll');
+    const closingStages = document.querySelectorAll('.closing-stage');
+
+    const closingStageOrder = [
+      'question',
+      'p1',
+      'p2',
+      'p3',
+      'p4',
+      'p5',
+      'p6'
+    ];
+
 
     const detailImages = [
       "images/Southern_prostitution_trends.png",
@@ -640,9 +1060,10 @@
       el.style.height = rect.height + '%';
     }
 
-    function showCopy(indexOrIntro) {
+    function showCopy(indexOrIntro, revealBody = false) {
       districtCopies.forEach((copy) => {
         copy.classList.remove('active');
+        copy.classList.remove('show-body');
       });
 
       if (indexOrIntro === 'intro') {
@@ -651,7 +1072,12 @@
       }
 
       const target = document.querySelector(`.district-copy[data-copy="${indexOrIntro}"]`);
-      if (target) target.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+        if (revealBody) {
+          target.classList.add('show-body');
+        }
+      }
     }
 
     let currentStage = -1;
@@ -695,7 +1121,6 @@
       }, STAGE_TRANSITION_MS);
     }
 
-
     function showIntroState() {
       highlightBox.classList.remove('visible');
       zoomPlotShell.classList.remove('visible');
@@ -707,14 +1132,14 @@
       const isZoomState = state % 2 === 1;
       const districtIndex = Math.floor(state / 2);
 
-      showCopy(districtIndex);
-
       if (!isZoomState) {
+        showCopy(districtIndex, false);
         setRect(highlightBox, subplotRects[districtIndex]);
         highlightBox.classList.add('visible');
         zoomPlotShell.classList.remove('visible');
         fullFigureShell.classList.remove('dimmed');
       } else {
+        showCopy(districtIndex, true);
         zoomPlotImage.src = detailImages[districtIndex];
         setRect(highlightBox, zoomRect);
         setRect(zoomPlotShell, zoomRect);
@@ -725,38 +1150,109 @@
     }
 
     function updateScrollScene() {
-        const sectionRect = trendsSection.getBoundingClientRect();
-        const viewportH = window.innerHeight;
-        const scrollable = trendsSection.offsetHeight - viewportH;
+      const sectionRect = trendsSection.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const scrollable = trendsSection.offsetHeight - viewportH;
 
-        let progress = 0;
-        if (scrollable > 0) {
-          progress = Math.min(Math.max(-sectionRect.top / scrollable, 0), 1);
-        }
-
-        const introEnd = 0.12;
-        const sequenceStart = 0.16;
-        const totalStages = 10;
-
-        let desiredStage = -1;
-
-        if (progress >= introEnd) {
-          const sequenceProgress = Math.min(
-            Math.max((progress - sequenceStart) / (1 - sequenceStart), 0),
-            0.999999
-          );
-          desiredStage = Math.floor(sequenceProgress * totalStages);
-        }
-
-        goToStage(desiredStage);
-
-        ticking = false;
+      let progress = 0;
+      if (scrollable > 0) {
+        progress = Math.min(Math.max(-sectionRect.top / scrollable, 0), 1);
       }
+
+      const introEnd = 0.12;
+      const sequenceStart = 0.16;
+      const totalStages = 10;
+
+      let desiredStage = -1;
+
+      if (progress >= introEnd) {
+        const sequenceProgress = Math.min(
+          Math.max((progress - sequenceStart) / (1 - sequenceStart), 0),
+          0.999999
+        );
+        desiredStage = Math.floor(sequenceProgress * totalStages);
+      }
+
+      goToStage(desiredStage);
+    }
+
+    let currentClosingStage = -1;
+    let closingStageLocked = false;
+    let pendingClosingStage = null;
+    const CLOSING_STAGE_TRANSITION_MS = 1200;
+
+    function showClosingStageByIndex(index) {
+      closingStages.forEach(stage => stage.classList.remove('active'));
+
+      if (index < 0) return;
+
+      const stageName = closingStageOrder[index];
+      const target = document.querySelector(`.closing-stage[data-stage="${stageName}"]`);
+      if (target) target.classList.add('active');
+    }
+
+    function goToClosingStage(targetStage) {
+      if (targetStage === currentClosingStage) return;
+
+      if (closingStageLocked) {
+        pendingClosingStage = targetStage;
+        return;
+      }
+
+      closingStageLocked = true;
+
+      if (targetStage > currentClosingStage) {
+        currentClosingStage += 1;
+      } else {
+        currentClosingStage -= 1;
+      }
+
+      showClosingStageByIndex(currentClosingStage);
+
+      setTimeout(() => {
+        closingStageLocked = false;
+
+        if (pendingClosingStage !== null && pendingClosingStage !== currentClosingStage) {
+          const next = pendingClosingStage;
+          pendingClosingStage = null;
+          goToClosingStage(next);
+        } else {
+          pendingClosingStage = null;
+        }
+      }, CLOSING_STAGE_TRANSITION_MS);
+    }
+
+    function updateClosingScene() {
+      const sectionRect = closingScrollSection.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const scrollable = closingScrollSection.offsetHeight - viewportH;
+
+      let progress = 0;
+      if (scrollable > 0) {
+        progress = Math.min(Math.max(-sectionRect.top / scrollable, 0), 1);
+      }
+
+      let desiredStage = -1;
+
+      /* question appears earlier than before, but still with a bit of suspense */
+      if (progress >= 0.10 && progress < 0.22) {
+        desiredStage = 0; // question
+      } else if (progress >= 0.22) {
+        const paragraphProgress = Math.min((progress - 0.22) / 0.78, 0.999999);
+        desiredStage = 1 + Math.floor(paragraphProgress * 6); // p1 to p6
+      }
+
+      goToClosingStage(desiredStage);
+    }
 
     function requestTick() {
       if (!ticking) {
         ticking = true;
-        requestAnimationFrame(updateScrollScene);
+        requestAnimationFrame(() => {
+          updateScrollScene();
+          updateClosingScene();
+          ticking = false;
+        });
       }
     }
 
@@ -778,8 +1274,7 @@
     });
 
     trendsEntranceObserver.observe(trendsSection);
-    
-</script>
+  </script>
 
 </body>
 </html>
