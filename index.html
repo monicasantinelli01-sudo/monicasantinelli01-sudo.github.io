@@ -469,7 +469,7 @@
 
     .closing-scroll-section {
       position: relative;
-      height: 700vh;
+      height: 260vh;
       background: #2c1733;
     }
 
@@ -507,9 +507,9 @@
       visibility: hidden;
       transform: translateY(18px);
       transition:
-        opacity 0.55s ease,
-        transform 0.55s ease,
-        visibility 0s linear 0.55s;
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0s linear 0.45s;
       will-change: opacity, transform;
       pointer-events: none;
     }
@@ -519,8 +519,8 @@
       visibility: visible;
       transform: translateY(0);
       transition:
-        opacity 0.55s ease,
-        transform 0.55s ease,
+        opacity 0.45s ease,
+        transform 0.45s ease,
         visibility 0s linear 0s;
     }
 
@@ -554,7 +554,155 @@
     }
 
     /* =========================
-       REFERENCES SECTION
+      STATIC ARTICLE GRID
+      ========================= */
+
+    .article-grid-section {
+      background: #2c1733;
+      color: #f6f2eb;
+      padding: 13vh 6vw 11vh 6vw;
+    }
+
+    .article-grid-inner {
+      max-width: 1420px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 3.5rem;
+      row-gap: 5.5rem;
+      align-items: start;
+    }
+
+    .row1-col1 {
+      grid-column: 1 / 3;
+    }
+
+    .row1-col2 {
+      grid-column: 3 / 5;
+    }
+
+    .row1-col3 {
+      grid-column: 5 / 7;
+    }
+
+    .article-plot-block {
+      grid-column: 1 / 4;
+      align-self: center;
+    }
+
+    .article-text-block {
+      grid-column: 4 / 7;
+      align-self: start;
+    }
+
+    .article-block {
+      position: relative;
+      padding-top: 1.15rem;
+      max-width: 390px;
+    }
+
+    .row1-col1,
+    .row1-col2,
+    .row1-col3 {
+      border-top: 1px solid rgba(239, 218, 246, 0.18);
+    }
+
+    .row1-col1 {
+      justify-self: start;
+    }
+
+    .row1-col2 {
+      justify-self: center;
+    }
+
+    .row1-col3 {
+      justify-self: end;
+    }
+
+    .article-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.25rem, 1.7vw, 1.95rem);
+      line-height: 1.04;
+      font-weight: 500;
+      color: #f6f2eb;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .article-block p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.82;
+      color: #f6f2eb;
+      opacity: 0.95;
+    }
+
+    .article-plot-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .article-text-block {
+      max-width: 100%;
+      padding-top: 0.4rem;
+    }
+
+    .article-text-block h3 {
+      font-size: clamp(1.45rem, 2vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .article-text-block p {
+      max-width: 620px;
+    }
+
+    /* =========================
+      CONCLUSION SECTION
+      ========================= */
+
+    .conclusion-section {
+      background: #2c1733;
+      color: #f6f2eb;
+      padding: 12vh 8vw 12vh 8vw;
+    }
+
+    .conclusion-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .conclusion-inner.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .conclusion-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 2.8vw, 3rem);
+      line-height: 1.02;
+      font-weight: 500;
+      color: #f6f2eb;
+      margin-bottom: 1rem;
+    }
+
+    .conclusion-text p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #f6f2eb;
+      opacity: 0.95;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* =========================
+          REFERENCES SECTION
        ========================= */
 
     .references-section {
@@ -640,6 +788,38 @@
       .full-figure-shell.revealed {
         transform: translate(-50%, -50%);
       }
+
+      .article-grid-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .row1-col1,
+      .row1-col2,
+      .row1-col3,
+      .article-plot-block,
+      .article-text-block {
+        grid-column: auto;
+        justify-self: stretch;
+      }
+
+      .article-block {
+        max-width: 100%;
+      }
+
+      .row1-col1,
+      .row1-col2,
+      .row1-col3 {
+        border-top: 1px solid rgba(239, 218, 246, 0.18);
+      }
+
+      .article-text-block p {
+        max-width: 100%;
+      }
+
+      .conclusion-inner {
+        max-width: 760px;
+      }
     }
 
     @media (max-width: 700px) {
@@ -676,6 +856,11 @@
       }
 
       .references-section {
+        padding: 8vh 8vw 10vh 8vw;
+      }
+
+      .article-grid-section,
+      .conclusion-plot-section {
         padding: 8vh 8vw 10vh 8vw;
       }
     }
@@ -836,60 +1021,75 @@
             The lower reported incidents may reflect changes in law enforcement priorities, reporting practices, or the displacement of prostitution to other areas or online platforms.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="closing-stage closing-paragraph" data-stage="p2">
-          <h3>Shift toward online solicitation</h3>
-          <p>
-            Some of the long decline in reported street prostitution may also reflect a broader move toward online solicitation. 
-            PBS reported in 2010 that Craigslist removed its adult-services ads, and Cunningham and Kendall describe the rise of “institutions that facilitate prostitution online.” 
-            A 2011 TIME article likewise described sex workers shifting from Craigslist to Facebook. (Source?) Moreover, a report from KALW argues that San Francisco's tech boom and gentrification 
-            did not really reduce sex work but instead restructured it along class lines, pushing wealthier clients and workers to online platforms while leaving the poorer individuals on the streets.
-          </p>
-        </div>
+  <section class="article-grid-section" id="article-grid">
+    <div class="article-grid-inner">
 
-        <div class="closing-stage closing-paragraph" data-stage="p3">
-          <h3>Changes in policing strategy and priorities</h3>
-          <p>
-            There were various changes in policing strategies in the time period from 2017 to 2025. In 2017, the SFPD released a Department Bulletin which changed the behaviour of the Police regarding Prostitution incidents. 
-            In the document, it was stated that all forms of sex workers who are witnesses or victims of violent crimes like assault, trafficking, stalking, robbery, kidnapping, extortion, etc. cannot be arrested due to prostitution incidents. 
-            It was also stated that officers who misbehave in the contact with sex workers will face disciplinary consequences. 
-            Another legal change was the Safer Streets Act from 2022 which changed the behaviour regarding loitering. In this senate bill it was stated that it is no longer possible to convict someone for being suspected of intent to engage in prostitution. 
-            Additionally, people which were previously convicted under the loitering law could now petition for dismissal and sealing of their records. 
-            Furthermore, any minors which were arrested for prostitution-related offenses were automatically presumed a victim, not as criminals.
-            These legal adjustments were influencing the crime statistics directly after their release. For instance, in the first half of 2023, solicitation charges against clients made up nearly 80% of all prostitution-related incidents.
-          </p>
-        </div>
+      <article class="article-block row1-col1">
+        <h3>Shift toward online solicitation</h3>
+        <p>
+          Some of the long decline in reported street prostitution may also reflect a broader move toward online solicitation. 
+          PBS reported in 2010 that Craigslist removed its adult-services ads, and Cunningham and Kendall describe the rise of “institutions that facilitate prostitution online.” 
+          A 2011 TIME article likewise described sex workers shifting from Craigslist to Facebook. (Source?) Moreover, a report from KALW argues that San Francisco's tech boom and gentrification 
+          did not really reduce sex work but instead restructured it along class lines, pushing wealthier clients and workers to online platforms while leaving poorer individuals on the streets.
+        </p>
+      </article>
 
-        <div class="closing-stage closing-paragraph" data-stage="p4">
-          <h3>Legal framework and statistical effects</h3>
-          <p>
-            Part of the drop in reported prostitution incidents may reflect changes in the legal framework, not only changes in the underlying activity. 
-            Local News Matters wrote that “Prior to 2023, police could arrest suspected prostitutes under the state’s anti-loitering law, which has since been repealed” and that “Loitering arrests accounted for 65 percent of all citations related to sex work in the past five years".
-            This means that part of the decline in official prostitution incidents may come from changes in what police were allowed to stop, cite, and arrest.
-          </p>
-        </div>
+      <article class="article-block row1-col2">
+        <h3>Programs and debate</h3>
+        <p>
+          During the investigated time period, various organizations and programs were trying to influence legislation, support sex workers, or prevent Johns from soliciting sex workers in the future. 
+          For instance, the US PROS Collective is still fighting for the decriminalization of prostitution and aims for protection, justice, and resources to prevent people from being forced into sex work due to poverty or violence. 
+          Moreover, programs like “John Schools” focus on preventing further contact after initial solicitation. 
+          Johns, after being convicted, have to join virtual courses providing information regarding potential health risks, sex trafficking education, and legal consequences.
+          However, there was also criticism regarding these “John School” initiatives. For instance, Local and Jordan claimed that the decrease in prostitution incidents actually began two years before the program was implemented and that the study never measured actual participants. 
+          Therefore, the authors state that there is no actual evidence that these programs reduce re-offending rates.
+        </p>
+      </article>
 
-        <div class="closing-stage closing-paragraph" data-stage="p5">
-          <h3>Programs and debate</h3>
-          <p>
-            During the investigated time period, various organizations and programs were trying to make an influence on the legislation, supporting sex workers or preventing Johns from soliciting sex workers in the future. 
-            For instance, the US PROS Collective is still fighting for the decriminalization of prostitution and aims for protection, justice and resources to prevent people of being forced into sex work due to poverty or violence. (https://uspros.net/about/ ) 
-            Moreover, programs like “John Schools” are focusing on preventing further contacts after initial solicitation. 
-            Johns, after being convicted, have to join virtual courses which are providing information regarding potential health risks, sex trafficking education and legal consequences.
-            However, there was some criticism regarding these “John School” initiatives. For instance, Local and Jordan were claiming that the decrease in prostitution incidents actually began two years before the program was implemented and that the study never measured actual participants. 
-            Therefore, the authors are stating that there is no actual evidence that these programs reduce re-offending numbers.
-          </p>
-        </div>
+      <article class="article-block row1-col3">
+        <h3>The Whac-A-Mole Effect: displacement rather than disappearance</h3>
+        <p>
+          Recent reporting shows that street-level prostitution in the Mission was not simply removed, but pushed between nearby streets. 
+          Mission Local wrote that after Capp Street was closed to through traffic, “the same problems have instead moved to their doorsteps,” and NBC Bay Area reported that “the prostitution problem was pushed a few blocks down” to Shotwell Street. 
+          Later coverage in the San Francisco Standard said residents feared new barriers on Shotwell would “just move the problem” again, while Mission Local quoted a resident saying, “all it’s going to do is move the sex workers from this street over to some new street, just like it did from Capp.” 
+          This supports a measured reading of the data: lower counts in one corridor do not automatically mean the activity is gone, only that its visible geography may have changed.
+        </p>
+      </article>
 
-        <div class="closing-stage closing-paragraph" data-stage="p6">
-          <h3>The Whac-A-Mole Effect: displacement rather than disappearance</h3>
-          <p>
-            Recent reporting shows that street-level prostitution in the Mission was not simply removed, but pushed between nearby streets. 
-            Mission Local wrote that after Capp Street was closed to through traffic, “the same problems have instead moved to their doorsteps,” and NBC Bay Area reported that “the prostitution problem was pushed a few blocks down” to Shotwell Street. 
-            Later coverage in the San Francisco Standard said residents feared new barriers on Shotwell would “just move the problem” again, while Mission Local quoted a resident saying, “all it’s going to do is move the sex workers from this street over to some new street, just like it did from Capp.” 
-            This supports a measured reading of the data: lower counts in one corridor do not automatically mean the activity is gone, only that its visible geography may have changed.
-          </p>
-        </div>
+      <div class="article-plot-block">
+        <img src="images/yearly_Prostitution_trends.png" alt="Yearly prostitution trends by district">
+      </div>
+
+      <article class="article-block article-text-block">
+        <h3>Changes in policing strategy and priorities</h3>
+        <p>
+          There were various changes in policing strategies in the time period from 2017 to 2025. In 2017, the SFPD released a Department Bulletin which changed police behavior regarding prostitution incidents. 
+          In the document, it was stated that sex workers who are witnesses or victims of violent crimes like assault, trafficking, stalking, robbery, kidnapping, extortion, etc. cannot be arrested due to prostitution incidents. 
+          It was also stated that officers who misbehave in contact with sex workers will face disciplinary consequences. 
+          Another legal change was the Safer Streets Act from 2022 which changed behavior regarding loitering. In this senate bill it was stated that it is no longer possible to convict someone for being suspected of intent to engage in prostitution. 
+          Additionally, people previously convicted under the loitering law could now petition for dismissal and sealing of their records. 
+          Furthermore, any minors arrested for prostitution-related offenses were automatically presumed to be victims, not criminals.
+          These legal adjustments influenced the crime statistics directly after their release. For instance, in the first half of 2023, solicitation charges against clients made up nearly 80% of all prostitution-related incidents.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="conclusion-section" id="conclusion">
+    <div class="conclusion-inner fade-pair">
+      <div class="conclusion-text">
+        <h3>Conclusion</h3>
+        <p>
+          The decline in prostitution-related incidents in San Francisco should be read cautiously. The data strongly suggest that visible street prostitution changed in form and geography rather than simply disappearing. 
+          Gentrification, policing changes, legal reforms, and the rise of online solicitation all seem to have reshaped where and how prostitution-related activity appears in official records. 
+          In some districts, declining counts may reflect displacement, reduced street visibility, or altered enforcement priorities rather than a true disappearance of the activity itself. 
+          Taken together, the pattern is less a clean story of reduction and more a story of transformation.
+        </p>
       </div>
     </div>
   </section>
@@ -1021,12 +1221,7 @@
 
     const closingStageOrder = [
       'question',
-      'p1',
-      'p2',
-      'p3',
-      'p4',
-      'p5',
-      'p6'
+      'p1'
     ];
 
 
@@ -1179,7 +1374,7 @@
     let currentClosingStage = -1;
     let closingStageLocked = false;
     let pendingClosingStage = null;
-    const CLOSING_STAGE_TRANSITION_MS = 1200;
+    const CLOSING_STAGE_TRANSITION_MS = 1000;
 
     function showClosingStageByIndex(index) {
       closingStages.forEach(stage => stage.classList.remove('active'));
@@ -1234,12 +1429,10 @@
 
       let desiredStage = -1;
 
-      /* question appears earlier than before, but still with a bit of suspense */
-      if (progress >= 0.10 && progress < 0.22) {
+      if (progress >= 0.04 && progress < 0.34) {
         desiredStage = 0; // question
-      } else if (progress >= 0.22) {
-        const paragraphProgress = Math.min((progress - 0.22) / 0.78, 0.999999);
-        desiredStage = 1 + Math.floor(paragraphProgress * 6); // p1 to p6
+      } else if (progress >= 0.34) {
+        desiredStage = 1; // p1
       }
 
       goToClosingStage(desiredStage);
@@ -1272,8 +1465,25 @@
       threshold: 0.01,
       rootMargin: "0px 0px -8% 0px"
     });
-
     trendsEntranceObserver.observe(trendsSection);
+
+    const fadePair = document.querySelector('.fade-pair');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.22
+    });
+
+    if (fadePair) {
+      fadeObserver.observe(fadePair);
+    }
+
   </script>
 
 </body>
