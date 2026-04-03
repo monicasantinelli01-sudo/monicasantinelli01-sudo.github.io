@@ -34,25 +34,18 @@
 
     sup a {
       text-decoration: none;
-      color: #b672c1;
       font-family: 'Poppins', sans-serif;
       font-size: 0.72em;
       font-weight: 500;
       margin-left: 0.12em;
       transition: opacity 0.25s ease;
+      color: #efdaf6cb;
     }
 
     sup a:hover {
-      opacity: 0.75;
       text-decoration: underline;
-    }
-
-    .map-overlay sup a,
-    .district-copy sup a,
-    .intro-copy sup a,
-    .closing-stage sup a,
-    .references-section sup a {
-      color: #efdaf6cb;
+      text-underline-offset: 0.12em;
+      text-decoration-thickness: 1px;
     }
 
     .hero {
@@ -81,7 +74,7 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 4rem);
+      font-size: clamp(2rem, 3.8vw, 4rem);
       line-height: 0.95;
       font-weight: 500;
       margin-bottom: 1.8rem;
@@ -90,10 +83,10 @@
 
     .hero p {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(1rem, 1vw, 1.2rem);
+      font-size: clamp(1rem, 1vw, 1rem);
       text-align: left;
       margin: 0 auto;
-      line-height: 1.8;
+      line-height: 1.7;
       max-width: 850px;
       color: #f6f2eb;
     }
@@ -161,23 +154,16 @@
     .map-overlay {
       position: relative;
       z-index: 2;
-      width: min(380px, 82vw);
+      width: min(480px, 88vw);
       margin-right: 0;
-      padding: 1.6rem;
+      padding: 2.2rem;
       background: #2c1733;
       color: #f6f2eb;
-      border-radius: 8px 0 0 8px;
+      border-radius: 10px 0 0 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
       opacity: 0;
       transform: translateX(180px);
       transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .map-overlay h2,
-    .map-overlay p {
-      opacity: 0;
-      transform: translateY(-24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .map-overlay h2 {
@@ -277,6 +263,7 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+      pointer-events: auto;
       transition:
         opacity 0.55s ease,
         transform 0.55s ease,
@@ -501,41 +488,25 @@
     .article-grid-section {
       background: #2c1733;
       color: #f6f2eb;
-      padding: 12vh 8vw 20vh 8vw;
-    }
+      padding: 18vh 8vw 18vh 8vw;
+    }    
 
     .article-grid-inner {
-      max-width: 1420px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      column-gap: 3rem;
-      row-gap: 6rem;
+      grid-template-columns: 1fr;
+      row-gap: 4rem;
       align-items: start;
     }
 
-    .row1-col1 {
-      grid-column: 1 / 3;
-      justify-self: start;
+    .article-block,
+    .article-text-block {
+      max-width: 100%;
+      width: 100%;
+      justify-self: stretch;
       border-top: 1px solid rgba(239, 218, 246, 0.18);
-    }
-
-    .row1-col2 {
-      grid-column: 3 / 5;
-      justify-self: center;
-      border-top: 1px solid rgba(239, 218, 246, 0.18);
-    }
-
-    .row1-col3 {
-      grid-column: 5 / 7;
-      justify-self: end;
-      border-top: 1px solid rgba(239, 218, 246, 0.18);
-    }
-
-    .article-block {
-      position: relative;
       padding-top: 1.15rem;
-      max-width: 500px;
     }
 
     .article-block h3 {
@@ -552,52 +523,59 @@
       font-family: 'Poppins', sans-serif;
       font-size: 0.9rem;
       line-height: 1.8;
-      max-width: 680px;
       color: #f6f2eb;
       text-align: left;
-      margin: 0 auto;
+    }
+    
+    .article-block-2,
+    .article-text-block-2 {
+      max-width: 100%;
+      width: 100%;
+      justify-self: stretch;
+      padding-top: 0.5rem;
+    }
+    .article-block-2 p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #f6f2eb;
+      text-align: left;
+    }
+
+    .article-plot-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
     }
 
     .article-plot-block {
-      grid-column: 1 / 4;
-      align-self: center;
+      grid-column: auto;
       height: 460px;
       display: flex;
-      justify-content: center;  
+      justify-content: center;
       align-items: center;
     }
 
     .article-plot-frame {
       width: 100%;
       height: 100%;
-     /* width: 650px;
-      height: 450px;*/
       border: none;
       display: flex;
       overflow: hidden;
     }
 
-    .article-text-block {
-      grid-column: 4 / 7;
-      align-self: start;
-      max-width: 100%;
-      padding-top: 1.15rem;     
-      border-top: 1px solid rgba(239, 218, 246, 0.18);  
+    .article-plot-description {
+      border-top: 1px solid rgba(239, 218, 246, 0.18);
+      padding-top: 1.15rem;
     }
 
-    .article-text-block h3 {
-      font-size: clamp(1.4rem, 1.9vw, 2rem);
-      margin-bottom: 1rem;
-    }
-
-    .article-text-block p {
+    .article-plot-description p {
       font-family: 'Poppins', sans-serif;
       font-size: 0.9rem;
       line-height: 1.8;
-      max-width: 680px;
       color: #f6f2eb;
       text-align: left;
-      margin: 0 auto;
     }
 
     /* =========================
@@ -607,7 +585,7 @@
     .conclusion-section {
       background: #2c1733;
       color: #f6f2eb;
-      padding: 22vh 8vw 22vh 8vw;
+      padding: 18vh 8vw 30vh 8vw;
     }
 
     .conclusion-inner {
@@ -634,12 +612,12 @@
     }
 
     .conclusion-text p {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      line-height: 1.85;
+       font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.3;
       color: #f6f2eb;
-      opacity: 0.95;
-      max-width: 760px;
+      opacity: 0.9;
+      max-width: 720px;
       margin: 0 auto;
     }
 
@@ -650,7 +628,7 @@
     .references-section {
       background: #2c1733;
       color: #f6f2eb;
-      padding: 18vh 8vw 18vh 8vw;
+      padding: 30vh 8vw 10vh 8vw;
       border-top: 1px solid rgba(239, 218, 246, 0.15);
     }
 
@@ -661,10 +639,10 @@
 
     .references-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.05;
-      font-weight: 500;
-      margin-bottom: 1.8rem;
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.02;
+      font-weight: 450;
+      margin-bottom: 2rem;
       text-align: center;
       color: #f6f2eb;
     }
@@ -672,14 +650,22 @@
     .references-list {
       list-style: decimal;
       padding-left: 1.5rem;
+      scroll-margin-top: 120px;
     }
 
     .references-list li {
       font-family: 'Poppins', sans-serif;
-      font-size: 0.98rem;
+      font-size: 0.8rem;
       line-height: 1.8;
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
       color: #f6f2eb;
+    }
+
+    .references-list li:target {
+      background: rgba(239, 218, 246, 0.08);
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
     }
 
     .references-list a {
@@ -690,6 +676,21 @@
 
     .references-list a:hover {
       opacity: 0.8;
+    }
+    
+    .site-footer {
+      padding: 24px 20px 40px;
+      text-align: center;
+    }
+    
+    .ai-disclaimer {
+      font-family: 'Poppins', sans-serif;
+      padding-bottom: 20px;
+      font-size: 0.7rem;
+      line-height: 1.5;
+      margin: 0 auto;
+      max-width: 900px;
+      color: #efdaf6cb;
     }
 
     @media (max-width: 1100px) {
@@ -724,27 +725,14 @@
         gap: 3rem;
       }
 
-      .row1-col1,
-      .row1-col2,
-      .row1-col3,
-      .article-plot-block,
-      .article-text-block {
-        grid-column: auto;
-        justify-self: stretch;
+      .article-plot-row {
+        grid-template-columns: 1fr;
+        align-items: start;
       }
 
-      .article-block {
-        max-width: 100%;
-      }
-
-      .row1-col1,
-      .row1-col2,
-      .row1-col3 {
-        border-top: 1px solid rgba(239, 218, 246, 0.18);
-      }
-
-      .article-text-block p {
-        max-width: 100%;
+      .article-plot-block {
+        height: 380px;
+        transform: translateY(0);
       }
 
       .conclusion-inner {
@@ -803,7 +791,7 @@
       <div class="hero-tag">About</div>
       <h1>Prostitution in San Francisco</h1>
       <p>
-        The following analysis examines prostitution-related crime patterns in San Francisco, using two official datasets from the San Francisco Police Department<sup><a href="#ref1">1</a></sup>.
+        The following analysis examines prostitution-related crime patterns in San Francisco, using two official datasets from the San Francisco Police Department<sup><a id="citation1" href="https://data.sfgov.org/browse?category=Public+Safety&sortBy=relevance&page=1&pageSize=20" target="_blank" rel="noopener noreferrer">1</a></sup>.
         One covers the time from 2003 to 2018 and the other covers the period from 2018 until the end of 2025.
         The datasets are merged and the focus is on how the crime patterns of Prostitution changed within the above-mentioned time period.
       </p>
@@ -855,9 +843,9 @@
                 followed by a sharp local peak in the mid-2010s and then a strong decline.
                 Thinking of the social and economic factors, the district made a massive demographic and constructive change in the last decades.
                 It went from an industrial environment with warehouses and plants to a global technology center.
-                This led to a significant gentrification, increasing housing costs and the displacement of working-class citizens in that part of the town<sup><a href="#ref2">2,</a></sup><sup><a href="#ref3">3</a></sup>.
-                Moreover, the district did undergo a big change in terms of urban densification based on the Transit Center District Plan of 2012 which resulted in a higher portion of skyscrapers within the district<sup><a href="#ref4">4</a></sup>.
-                In terms of criminality, mainly areas near the Market street, between the 5th and 10th street have a high crime concentration including prostitution, drugs and violence<sup><a href="#ref5">5,</a></sup><sup><a href="#ref6">6</a></sup>.
+                This led to a significant gentrification, increasing housing costs and the displacement of working-class citizens in that part of the town<sup><a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">2,</a></sup><sup><a href="https://5743rdstcentralapartments.com/2025/01/28/the-soma-district-from-industrial-hub-to-tech-center/" target="_blank" rel="noopener noreferrer">3</a></sup>.
+                Moreover, the district did undergo a big change in terms of urban densification based on the Transit Center District Plan of 2012 which resulted in a higher portion of skyscrapers within the district<sup><a href="https://www.structuremag.org/article/salesforce-tower/" target="_blank" rel="noopener noreferrer">4</a></sup>.
+                In terms of criminality, mainly areas near the Market street, between the 5th and 10th street have a high crime concentration including prostitution, drugs and violence<sup><a href="https://www.inside-guide-to-san-francisco-tourism.com/san-francisco-crime.html#:~:text=Violent%20crimes%20are%20concentrated%20in,other%20cities%2C%20especially%20U.S%20ones" target="_blank" rel="noopener noreferrer">5,</a></sup><sup><a href="https://www.businessinsider.com/prostitution-homelessness-and-drugs-surround-twitters-new-hq-2014-3" target="_blank" rel="noopener noreferrer">6</a></sup>.
               </p>
             </div>
 
@@ -867,10 +855,10 @@
                 Since the early 2000s Tenderloin was one of the most criminal districts in San Francisco. 
                 In contrast to other districts, this neighborhood has resisted or complicated typical gentrification patterns over time. 
                 A 2015 analysis argues it has been relatively “immune” to gentrification because a large share of housing is permanently affordable or nonprofit-controlled, 
-                limiting speculation and displacement even as nearby areas upscale<sup><a href="#ref7">7</a></sup>.
+                limiting speculation and displacement even as nearby areas upscale<sup><a href="https://www.yesmagazine.org/economy/2015/08/25/how-san-francisco-tenderloin-immune-gentrification" target="_blank" rel="noopener noreferrer">7</a></sup>.
                 Years later, coverage emphasizes that instead of gentrifying, the neighborhood has increasingly concentrated poverty, homelessness and drug activity,
                 with open-air drug markets and social crises dominating daily life, leading to —so much so that children need escorts to safely navigate the streets— 
-                suggesting that Tenderloin is still one of San Francisco’s most troubled areas despite broader citywide development pressures<sup><a href="#ref8">8,</a></sup><sup><a href="#ref9">9</a></sup>.
+                suggesting that Tenderloin is still one of San Francisco’s most troubled areas despite broader citywide development pressures<sup><a href="https://abc7news.com/post/sf-tenderloin-drug-arrests-narcan-homeless/11535735/" target="_blank" rel="noopener noreferrer">8,</a></sup><sup><a href="https://apnews.com/article/san-francisco-tenderloin-drugs-children-7ae668d1050363170514ca057589ec1e" target="_blank" rel="noopener noreferrer">9</a></sup>.
                 All this confirms the fact that the district has been historically associated with prostitution-related activity and it can still be considered one of the areas with the highest concentration of prostitution-related incidents in the city, 
                 even if the trends show a decrease in the number of incidents over time.
                 Moreover, as also later mentioned in the Northern district section, the hotspots are located along the border along Polk Street and Larkin Street shared by Tenderloin and Northern districts, thus it can be hard to distinguish the two districts in terms of prostitution-related activity.
@@ -880,11 +868,11 @@
             <div class="district-copy" data-copy="2">
               <h3>Central</h3>
               <p>
-                The Central District experienced significant demographic change between 2000 and 2015, as rising housing costs contributed to the displacement of lower-income residents across San Francisco<sup><a href="#ref10">10</a></sup>.
-                Historically, prostitution activity in the city has been more strongly associated with nearby areas such as the Tenderloin, which has long been recognized as a center of vice-related activity<sup><a href="#ref11">11</a></sup>.
+                The Central District experienced significant demographic change between 2000 and 2015, as rising housing costs contributed to the displacement of lower-income residents across San Francisco<sup><a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">2</a></sup>.
+                Historically, prostitution activity in the city has been more strongly associated with nearby areas such as the Tenderloin, which has long been recognized as a center of vice-related activity<sup><a href="https://en.wikipedia.org/wiki/Tenderloin,_San_Francisco" target="_blank" rel="noopener noreferrer">10</a></sup>.
                 As a result, the Central District does not emerge as a primary long-term prostitution hotspot in the data. Instead, it functions as a high-demand downtown policing area: 
-                it accounted for a substantial share of citywide calls for service and led in several categories, including total incidents and property crimes such as larceny/theft and car break-ins<sup><a href="#ref12">12</a></sup>.
-                This suggests that policing priorities in the district are more focused on managing tourism, major events, and property-related crime<sup><a href="#ref12">12</a></sup>, which may help explain the relatively lower and declining levels of prostitution-related incidents observed over time.
+                it accounted for a substantial share of citywide calls for service and led in several categories, including total incidents and property crimes such as larceny/theft and car break-ins<sup><a href="https://www.sf.gov/sites/default/files/2025-01/SFPD%20Boundary%20Analysis%20Project%20Report%20December%202024.pdf" target="_blank" rel="noopener noreferrer">11</a></sup>.
+                This suggests that policing priorities in the district are more focused on managing tourism, major events, and property-related crime<sup><a href="https://www.sf.gov/sites/default/files/2025-01/SFPD%20Boundary%20Analysis%20Project%20Report%20December%202024.pdf" target="_blank" rel="noopener noreferrer">11</a></sup>, which may help explain the relatively lower and declining levels of prostitution-related incidents observed over time.
               </p>
             </div>
 
@@ -892,11 +880,11 @@
               <h3>Northern</h3>
               <p>
                 The Northern District was historically a hotspot for prostitution-related incidents, particularly along Polk Street and nearby corridors,
-                which were closely linked to street-based sex work in the early 2000s<sup><a href="#ref13">13</a></sup>. This area borders the Tenderloin, especially along Polk and Larkin Streets, 
+                which were closely linked to street-based sex work in the early 2000s<sup><a href="https://48hills.org/2023/03/on-polk-street-and-in-the-tenderloin-a-family-of-hustlers-and-priests/" target="_blank" rel="noopener noreferrer">12</a></sup>. This area borders the Tenderloin, especially along Polk and Larkin Streets, 
                 where such activity has also been concentrated, creating a contiguous zone of high activity across district boundaries. Thus the two districts can be considered as part of a single area with high prostitution-related activity.
                 Over time, however, the Northern District experienced significant demographic and economic changes. 
-                Between 2000 and 2015, rising housing costs contributed to the displacement of many low-income residents, including a substantial decline in Black households across central San Francisco neighborhoods<sup><a href="#ref10">10</a></sup>.
-                At the same time, parts of the district—especially around Polk Street and Fisherman’s Wharf—became increasingly commercialized, with growth in tourism, nightlife, and higher-end businesses<sup><a href="#ref14">14</a></sup>.
+                Between 2000 and 2015, rising housing costs contributed to the displacement of many low-income residents, including a substantial decline in Black households across central San Francisco neighborhoods<sup><a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">2</a></sup>.
+                At the same time, parts of the district—especially around Polk Street and Fisherman’s Wharf—became increasingly commercialized, with growth in tourism, nightlife, and higher-end businesses<sup><a href="https://www.cbsnews.com/sanfrancisco/news/san-francisco-polk-gulch-residents-claim-nightlife-scene-adds-to-crime/" target="_blank" rel="noopener noreferrer">13</a></sup>.
                 These shifts likely reduced the viability of street-based prostitution in the area. Increased commercialization, changing land use, and demographic turnover may have made the district less accessible or less suitable for such activity, contributing to the steady decline in prostitution-related incidents observed in the data.
               
               </p>
@@ -907,9 +895,9 @@
               <p>
                 The Mission District remained one of the areas where prostitution-related activity persisted more consistently than in several other parts of the city. 
                 However, recent reporting suggests that declines in recorded incidents may reflect spatial displacement rather than a true reduction in activity. 
-                For example, after Capp Street was closed to through traffic in early 2023, residents reported that street-based prostitution shifted to nearby corridors such as Shotwell Street, with one noting that “when the barriers went up … all the prostitution moved to Shotwell”<sup><a href="#ref15">15,</a></sup><sup><a href="#ref16">16</a></sup>.
-                In response, city authorities introduced additional measures, including traffic barriers, public surveillance cameras, and the “Dear John” program, which targets demand by notifying individuals identified as soliciting prostitution<sup><a href="#ref17">17</a></sup>.
-                While these interventions aim to deter activity, local accounts indicate that they may have primarily redistributed it within the district rather than eliminated it<sup><a href="#ref15">15</a></sup>.
+                For example, after Capp Street was closed to through traffic in early 2023, residents reported that street-based prostitution shifted to nearby corridors such as Shotwell Street, with one noting that “when the barriers went up … all the prostitution moved to Shotwell”<sup><a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">14</a></sup><sup><a href="https://www.sfchronicle.com/sf/article/sex-prostitution-mission-san-francisco-20784778.php" target="_blank" rel="noopener noreferrer">15</a></sup>.
+                In response, city authorities introduced additional measures, including traffic barriers, public surveillance cameras, and the “Dear John” program, which targets demand by notifying individuals identified as soliciting prostitution<sup><a href="https://www.sanfranciscopolice.org/news/sfpd-launches-dear-john-program-reduce-prostitution-and" target="_blank" rel="noopener noreferrer">16</a></sup>.
+                While these interventions aim to deter activity, local accounts indicate that they may have primarily redistributed it within the district rather than eliminated it<sup><a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">14</a></sup>.
                 This pattern of displacement helps explain why prostitution-related incidents in the Mission decline over time in the data, yet remain present at non-negligible levels.
               </p>
             </div>
@@ -935,11 +923,9 @@
                 id="singleFigureImage"
               >
             </div>
-
-</div>
+          </div>
         </div>
-
-      </div>
+        </div>
     </div>
   </section>
 
@@ -963,57 +949,79 @@
   <section class="article-grid-section" id="article-grid">
     <div class="article-grid-inner">
 
-      <article class="article-block row1-col1">
+      <article class="article-block">
         <h3>Shift toward online solicitation</h3>
         <p>
-          Some of the long decline in reported street prostitution may also reflect a broader move toward online solicitation.
-          PBS reported in 2010 that Craigslist removed its adult-services ads, and Cunningham and Kendall describe the rise of “institutions that facilitate prostitution online.”
-          A 2011 TIME article likewise described sex workers shifting from Craigslist to Facebook. (Source?) Moreover, a report from KALW argues that San Francisco's tech boom and gentrification
-          did not really reduce sex work but instead restructured it along class lines, pushing wealthier clients and workers to online platforms while leaving poorer individuals on the streets.
+          Part of the long-term decline in reported street prostitution may reflect a broader shift toward online solicitation rather than a true reduction in activity. 
+          In 2010, Craigslist removed its “adult services” section under public pressure, prompting significant changes in how sex work was advertised and arranged<sup><a href="https://www.pbs.org/newshour/show/craigslist-drops-adult-services-ads-whats-the-real-impact" target="_blank" rel="noopener noreferrer">17</a></sup>. 
+          Researchers Cunningham and Kendall describe the emergence of “institutions that facilitate prostitution online,” highlighting how digital platforms increasingly replaced street-based markets.
+          At the same time, sex workers adapted by moving to other online spaces. A 2011 <i>TIME</i> article<sup><a href="https://time.com/archive/7142363/edged-out-of-times-square-and-off-craigslist-prostitutes-turn-to-facebook/" target="_blank" rel="noopener noreferrer">18</a></sup> reported that many individuals shifted from Craigslist to platforms such as Facebook, illustrating the resilience and adaptability of the market. 
+          In San Francisco specifically, reporting from KALW suggests that the tech boom and gentrification did not eliminate sex work but instead restructured it along class lines, with wealthier clients and workers moving to more discreet online arrangements while more vulnerable populations remained in street-based environments<sup><a href="https://www.kalw.org/show/crosscurrents/2015-07-01/sex-in-the-city-the-gentrification-of-sex-work" target="_blank" rel="noopener noreferrer">19</a></sup>.
+          This transition helps explain why prostitution-related incidents decline in official data: as activity moves online and indoors, it becomes less visible to law enforcement and less likely to be captured in street-level incident reports.
         </p>
       </article>
 
-      <article class="article-block row1-col2">
+      <article class="article-block">
         <h3>Programs and debate</h3>
         <p>
-          During the investigated time period, various organizations and programs were trying to influence legislation, support sex workers, or prevent Johns from soliciting sex workers in the future.
-          For instance, the US PROS Collective is still fighting for the decriminalization of prostitution and aims for protection, justice, and resources to prevent people from being forced into sex work due to poverty or violence.
-          Moreover, programs like “John Schools” focus on preventing further contact after initial solicitation.
-          Johns, after being convicted, have to join virtual courses providing information regarding potential health risks, sex trafficking education, and legal consequences.
-          However, there was also criticism regarding these “John School” initiatives. For instance, Local and Jordan claimed that the decrease in prostitution incidents actually began two years before the program was implemented and that the study never measured actual participants.
-          Therefore, the authors state that there is no actual evidence that these programs reduce re-offending rates.
+          During the period studied, various organizations and policies thought to reshape how prostitution was addressed, focusing both on supporting sex workers and reducing demand. 
+          For example, advocacy groups such as <i>US PROStitutes Collective</i> promote the decriminalization of sex work and emphasize access to resources, protection, and alternatives for individuals driven into the industry by poverty or violence<sup><a href="https://uspros.net/about/" target="_blank" rel="noopener noreferrer">20</a></sup>.
+          At the same time, law enforcement also introduced targeted demand strategies such as “John Schools”, which require individuals arrested for solicitation to attend educational sessions on legal consequences, health risks, and issues such as trafficking<sup><a href="https://localnewsmatters.org/2023/08/17/sex-work-and-the-city-policing-prostitution-in-san-francisco-reflects-evolving-attitudes/" target="_blank" rel="noopener noreferrer">22</a></sup>.
+          These programs are designed to reduce repeat offenses by discouraging future engagement with street-based prostitution.
+          However, their effectiveness is debated. Research by <i>Rachel Lovell and Ann Jordan</i> found limited evidence of reduced reoffending, and some reporting suggests that declines in prostitution-related incidents began before such programs were implemented<sup><a href="https://esplerp.org/wp-content/uploads/2012/05/John-Schools.Lovell.Jordan.7.12.pdf" target="_blank" rel="noopener noreferrer">21,</a></sup><sup><a href="https://localnewsmatters.org/2023/08/17/sex-work-and-the-city-policing-prostitution-in-san-francisco-reflects-evolving-attitudes/" target="_blank" rel="noopener noreferrer">22</a></sup>.
+          Overall, while these interventions may have influenced enforcement practices, the available evidence suggests they are unlikely to fully explain the long-term decline in prostitution-related incidents.
         </p>
       </article>
 
-      <article class="article-block row1-col3">
+      <article class="article-block">
         <h3>The Whac-A-Mole Effect: displacement rather than disappearance</h3>
         <p>
-          Recent reporting shows that street-level prostitution in the Mission was not simply removed, but pushed between nearby streets.
-          Mission Local wrote that after Capp Street was closed to through traffic, “the same problems have instead moved to their doorsteps,” and NBC Bay Area reported that “the prostitution problem was pushed a few blocks down” to Shotwell Street.
-          Later coverage in the San Francisco Standard said residents feared new barriers on Shotwell would “just move the problem” again, while Mission Local quoted a resident saying, “all it’s going to do is move the sex workers from this street over to some new street, just like it did from Capp.”
-          This supports a measured reading of the data: lower counts in one corridor do not automatically mean the activity is gone, only that its visible geography may have changed.
+          Recent reporting suggests that street-level prostitution in the Mission has not been eliminated but rather displaced between nearby streets. 
+          Coverage by <i>Mission Local</i> describes how, after Capp Street was closed to through traffic, “the same problems have instead moved to their doorsteps,” with activity shifting to nearby corridors such as Shotwell Street<sup><a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">14</a></sup>.
+          Residents and local reporting consistently frame these interventions as temporary fixes that redistribute, rather than resolve, the issue. As one resident noted, “all it’s going to do is move the sex workers from this street over to some new street, just like it did from Capp”<sup><a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">14</a></sup>.
+          This supports a cautious interpretation of the data: declines in prostitution-related incidents in specific locations do not necessarily indicate an overall reduction in activity, but may instead reflect changes in its spatial distribution.
         </p>
       </article>
 
-      <div class="article-plot-block">
-        <iframe
-          src="visualizations/percentage_of_arrests.html"
-          title="Percentage of arrests"
-          class="article-plot-frame"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <article class="article-block article-text-block">
-        <h3>Changes in policing strategy and priorities</h3>
+      <article class="article-block">
+        <h3>Changes in policing and legal framework</h3>
         <p>
-          There were various changes in policing strategies in the time period from 2017 to 2025. In 2017, the SFPD released a Department Bulletin which changed police behavior regarding prostitution incidents.
-          In the document, it was stated that sex workers who are witnesses or victims of violent crimes like assault, trafficking, stalking, robbery, kidnapping, extortion, etc. cannot be arrested due to prostitution incidents.
-          It was also stated that officers who misbehave in contact with sex workers will face disciplinary consequences.
-          Another legal change was the Safer Streets Act from 2022 which changed behavior regarding loitering. In this senate bill it was stated that it is no longer possible to convict someone for being suspected of intent to engage in prostitution.
-          Additionally, people previously convicted under the loitering law could now petition for dismissal and sealing of their records.
-          Furthermore, any minors arrested for prostitution-related offenses were automatically presumed to be victims, not criminals.
-          These legal adjustments influenced the crime statistics directly after their release. For instance, in the first half of 2023, solicitation charges against clients made up nearly 80% of all prostitution-related incidents.
+          The decline in prostitution-related incidents between 2017 and 2025 can be linked in part to changes in both policing practices and the legal framework. A key shift occurred in 2017, when the San Francisco Police Department issued a bulletin prioritizing the safety of sex workers. 
+          The directive stated that individuals engaged in sex work who are victims or witnesses of violent crimes should not be arrested for prostitution-related offenses, and it introduced disciplinary consequences for officers who engage in misconduct<sup><a href="https://www.sanfranciscopolice.org/sites/default/files/2018-11/A%2017-249%20Prioritizing%20Safety%20for%20Sex%20Workers.pdf" target="_blank" rel="noopener noreferrer">23</a></sup>.
+          In addition to changes in policing strategy, legal reforms at the state level significantly altered how prostitution-related activity is recorded. Prior to 2023, police could arrest individuals under California’s anti-loitering law, which accounted for a large share of prostitution-related citations. 
+          According to reporting by Local News Matters, such arrests represented around 65% of all sex work-related citations in recent years<sup><a href="https://localnewsmatters.org/2023/08/17/sex-work-and-the-city-policing-prostitution-in-san-francisco-reflects-evolving-attitudes/" target="_blank" rel="noopener noreferrer">22</a></sup>.
+          This changed with the passage of Senate Bill 357 (the Safer Streets Act), which decriminalized loitering for the purpose of engaging in prostitution and allowed individuals with prior convictions to seek dismissal of their records<sup><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220SB357" target="_blank" rel="noopener noreferrer">24</a></sup>. 
+          As a result, law enforcement lost a major tool for making prostitution-related arrests. 
+          The impact of these legal changes is visible in the data. In early 2023, solicitation charges against clients accounted for nearly 80% of prostitution-related incidents, indicating a shift away from policing sex workers themselves toward targeting demand<sup><a href="https://localnewsmatters.org/2023/08/17/sex-work-and-the-city-policing-prostitution-in-san-francisco-reflects-evolving-attitudes/" target="_blank" rel="noopener noreferrer">22</a></sup>.
+          This suggests that the observed decline in incidents reflects not only behavioral changes, but also a redefinition of what is recorded as a prostitution-related offense.
+        </p>
+      </article>
+
+      <div class="article-plot-row">
+        <div class="article-plot-block">
+          <iframe
+            src="visualizations/percentage_of_arrests.html"
+            title="Percentage of arrests"
+            class="article-plot-frame"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="article-plot-description">
+          <p>
+            The shift in policing priorities is also reflected in the plot on the left, which is interactive, allowing users to toggle individual police districts to explore trends more clearly. It shows arrest rates for prostitution incidents across police districts. 
+            In the early 2000s, arrest rates for prostitution-related incidents were consistently high across all five districts, often close to 90–100%, suggesting that most reported incidents resulted in an arrest.
+            From around 2012–2015 onwards, however, these rates began to decline notably across multiple districts, such as Tenderloin, indicating that officers were increasingly responding to incidents without making arrests. 
+            This pattern aligns with the broader shift in policing strategies described above. The Mission district, however, consistently shows both relatively high incident counts and high arrest rates, suggesting it remained a key hotspot receiving sustained police attention.
+            Fluctuations in the data from around 2018 onwards should be interpreted with caution. As total incident counts declined, the number of cases per district became very small, meaning that even a single arrest could significantly affect the percentage.
+          </p>
+        </div>
+      </div>
+      <article class="article-block-2">
+        <p>
+          The extreme swings between 0% and 100% observed in some districts in recent years should be interpreted with caution, as very small sample sizes can produce unstable percentages.
+          Rather than treating these fluctuations as evidence of a behavioral shift, they are better understood as raising further questions. 
+          For example, are these late-period patterns primarily statistical artifacts, or do they also reflect changes in enforcement priorities, reporting practices, or the visibility of prostitution-related activity?
         </p>
       </article>
 
@@ -1023,7 +1031,7 @@
   <section class="conclusion-section" id="conclusion">
     <div class="conclusion-inner fade-pair">
       <div class="conclusion-text">
-        <h3>Conclusion</h3>
+        <h3>Beyond the decline</h3>
         <p>
           The decline in prostitution-related incidents in San Francisco should be read cautiously. The data strongly suggest that visible street prostitution changed in form and geography rather than simply disappearing.
           Gentrification, policing changes, legal reforms, and the rise of online solicitation all seem to have reshaped where and how prostitution-related activity appears in official records.
@@ -1050,87 +1058,123 @@
         </li>
         <li id="ref3">
           <a href="https://5743rdstcentralapartments.com/2025/01/28/the-soma-district-from-industrial-hub-to-tech-center/" target="_blank" rel="noopener noreferrer">
-            third source
+            The South of Market District of SF from industrial hub to tech center, 5743rd Street Central Apartments
           </a>
         </li>
         <li id="ref4">
           <a href="https://www.structuremag.org/article/salesforce-tower/" target="_blank" rel="noopener noreferrer">
-            fourth source
+            Salesforce Tower in San Francisco, Structure Magazine
           </a>
         </li>
         <li id="ref5">
           <a href="https://www.inside-guide-to-san-francisco-tourism.com/san-francisco-crime.html#:~:text=Violent%20crimes%20are%20concentrated%20in,other%20cities%2C%20especially%20U.S%20ones" target="_blank" rel="noopener noreferrer">
-            fifth source
+            Inside Guide to San Francisco Tourism, Crime in San Francisco
           </a>
         </li>
         <li id="ref6">
           <a href="https://www.businessinsider.com/prostitution-homelessness-and-drugs-surround-twitters-new-hq-2014-3" target="_blank" rel="noopener noreferrer">
-            sixth source
+            Prostitution, homelessness and drugs surround Twitter’s new HQ in San Francisco, Business Insider
           </a>
         </li>
         <li id="ref7">
           <a href="https://www.yesmagazine.org/economy/2015/08/25/how-san-francisco-tenderloin-immune-gentrification" target="_blank" rel="noopener noreferrer">
-            Tenderloin Gentrification
+            How San Francisco’s Tenderloin Became Immune to Gentrification, Yes! Magazine
           </a>
         </li>
         <li id="ref8">
           <a href="https://abc7news.com/post/sf-tenderloin-drug-arrests-narcan-homeless/11535735/" target="_blank" rel="noopener noreferrer">
-            eighth source
+            San Francisco’s Tenderloin neighborhood sees 1,000 drug arrests in 2023, ABC7 News
           </a>
         </li>
         <li id="ref9">
           <a href="https://apnews.com/article/san-francisco-tenderloin-drugs-children-7ae668d1050363170514ca057589ec1e" target="_blank" rel="noopener noreferrer">
-            ninth source
+            Helpers escort kids through San Francisco’s broken Tenderloin streets, AP News
           </a>
         </li>
         <li id="ref10">
-          <a href="https://www.urbandisplacement.org/wp-content/uploads/2021/08/sf_final.pdf" target="_blank" rel="noopener noreferrer">
-            tenth source
+          <a href="https://en.wikipedia.org/wiki/Tenderloin,_San_Francisco" target="_blank" rel="noopener noreferrer">
+            Tenderloin, San Francisco - Wikipedia
           </a>
         </li>
         <li id="ref11">
-          <a href="https://en.wikipedia.org/wiki/Tenderloin,_San_Francisco" target="_blank" rel="noopener noreferrer">
-            11th source - Central district gentrification and prostitution displacement, UC Berkeley’s Urban Displacement Project and the California Housing Partnership
+          <a href="https://www.sf.gov/sites/default/files/2025-01/SFPD%20Boundary%20Analysis%20Project%20Report%20December%202024.pdf" target="_blank" rel="noopener noreferrer">
+            San Francisco Police Department Boundary Analysis Project Report, December 2024
           </a>
         </li>
         <li id="ref12">
-          <a href="https://www.sf.gov/sites/default/files/2025-01/SFPD%20Boundary%20Analysis%20Project%20Report%20December%202024.pdf" target="_blank" rel="noopener noreferrer">
-            12th source
+          <a href="https://48hills.org/2023/03/on-polk-street-and-in-the-tenderloin-a-family-of-hustlers-and-priests/" target="_blank" rel="noopener noreferrer">
+            On Polk Street and in the Tenderloin, a family of hustlers and priests, 48hills
           </a>
         </li>
         <li id="ref13">
-          <a href="https://48hills.org/2023/03/on-polk-street-and-in-the-tenderloin-a-family-of-hustlers-and-priests/" target="_blank" rel="noopener noreferrer">
-            13th source
+          <a href="https://www.cbsnews.com/sanfrancisco/news/san-francisco-polk-gulch-residents-claim-nightlife-scene-adds-to-crime/" target="_blank" rel="noopener noreferrer">
+            San Francisco’s Polk Gulch residents claim nightlife scene adds to crime, CBS News
           </a>
         </li>
         <li id="ref14">
-          <a href="https://www.cbsnews.com/sanfrancisco/news/san-francisco-polk-gulch-residents-claim-nightlife-scene-adds-to-crime/" target="_blank" rel="noopener noreferrer">
-            14th source
+          <a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">
+            SF playing Whac-A-Mole with prostitution, Mission Local
           </a>
         </li>
         <li id="ref15">
-          <a href="https://missionlocal.org/2023/12/sf-playing-whac-a-mole-prostitution/" target="_blank" rel="noopener noreferrer">
-            15th source
+          <a href="https://www.sfchronicle.com/sf/article/sex-prostitution-mission-san-francisco-20784778.php" target="_blank" rel="noopener noreferrer">
+            Sex Prostitution Mission San Francisco, San Francisco Chronicle
           </a>
         </li>
         <li id="ref16">
-          <a href="https://www.sfchronicle.com/sf/article/sex-prostitution-mission-san-francisco-20784778.php" target="_blank" rel="noopener noreferrer">
-            16th source
-          </a>
-        </li>
-        <li id="ref17">
           <a href="https://www.sanfranciscopolice.org/news/sfpd-launches-dear-john-program-reduce-prostitution-and" target="_blank" rel="noopener noreferrer">
             San Francisco Police Department, SFPD Launches Dear John Program to Reduce Prostitution and Human Trafficking, November 13, 2024
           </a>
         </li>
+        <li id="ref17">
+          <a href="https://www.pbs.org/newshour/show/craigslist-drops-adult-services-ads-whats-the-real-impact" target="_blank" rel="noopener noreferrer">
+            Craigslist drops adult services ads: What’s the real impact?, PBS NewsHour
+          </a>
+        </li>
         <li id="ref18">
-          <a href="https://www.sfchronicle.com/sf/article/sex-prostitution-mission-san-francisco-20784778.php" target="_blank" rel="noopener noreferrer">
-            18th source
+          <a href="https://time.com/archive/7142363/edged-out-of-times-square-and-off-craigslist-prostitutes-turn-to-facebook/" target="_blank" rel="noopener noreferrer">
+            Edged Out of Times Square and Off Craigslist, Prostitutes Turn to Facebook, TIME
+          </a>
+        </li>
+        <li id="ref19">
+          <a href="https://www.kalw.org/show/crosscurrents/2015-07-01/sex-in-the-city-the-gentrification-of-sex-work" target="_blank" rel="noopener noreferrer">
+            Sex in the City: The Gentrification of Sex Work, KALW
+          </a>
+        </li>
+        <li id="ref20">
+          <a href="https://uspros.net/about/" target="_blank" rel="noopener noreferrer">
+            US PROStitutes Collective, About USPROS
+          </a>
+        </li>
+         <li id="ref21">
+          <a href="https://esplerp.org/wp-content/uploads/2012/05/John-Schools.Lovell.Jordan.7.12.pdf" target="_blank" rel="noopener noreferrer">
+            Rachel Lovell and Ann Jordan, John Schools: A Systematic Review of the Research Evidence on Program Effectiveness, 2012
+          </a>
+        </li>
+        <li id="ref22">
+          <a href="https://localnewsmatters.org/2023/08/17/sex-work-and-the-city-policing-prostitution-in-san-francisco-reflects-evolving-attitudes/" target="_blank" rel="noopener noreferrer">
+            Sex work and the city: Policing prostitution in San Francisco reflects evolving attitudes, Local News Matters
+          </a>
+        </li>
+        <li id="ref23">
+          <a href="https://www.sanfranciscopolice.org/sites/default/files/2018-11/A%2017-249%20Prioritizing%20Safety%20for%20Sex%20Workers.pdf" target="_blank">
+            San Francisco Police Department (2017), Department Bulletin A 17-249
+          </a>
+        </li>
+        <li id="ref24">
+          <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220SB357" target="_blank" rel="noopener noreferrer">
+            California Legislative Information, Senate Bill No. 357 (Safer Streets Act)
           </a>
         </li>
       </ol>
     </div>
-  </section>
+    </section>
+
+    <div class="site-footer">
+      <p class="ai-disclaimer">
+        Note: AI tools were used only for minor wording support and basic website optimization. The research, analysis, and conclusions are the authors’ own.
+      </p>
+    </div>
 
   <script>
     const mapSection = document.querySelector('.map-section');
