@@ -594,9 +594,9 @@
 
     .conclusion-text h3 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3vw, 3.2rem);
+      font-size: clamp(2.5rem, 3.5vw, 4rem);
       line-height: 1.02;
-      font-weight: 550;
+      font-weight: 450;
       color: #f6f2eb;
       margin-bottom: 1rem;
     }
@@ -604,10 +604,10 @@
     .conclusion-text p {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
-        line-height: 1.2;
+        line-height: 1.3;
         color: #f6f2eb;
         opacity: 0.9;
-        max-width: 640px;
+        max-width: 720px;
         margin: 0 auto;
     }
 
@@ -684,90 +684,236 @@
     }
 
     @media (max-width: 1100px) {
-      .trends-layout {
-        grid-template-columns: 1fr;
-        padding: 7vh 6vw;
-      }
 
-      .trends-text-side {
-        padding-right: 0;
-        margin-bottom: 2rem;
-        min-height: 320px;
-      }
+        .hero h1 {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+        }
+        .hero p {
+            font-size: 0.85rem;
+        }
 
-      .district-copy-stack {
-        min-height: 320px;
-        width: 100%;
-      }
+        .scroll-indicator {
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+        }
 
-      .trends-visual-side {
-        height: 50vh;
-      }
+        .map-overlay {
+            width: min(320px, 78vw);
+            padding: 1.4rem 1.2rem;
+            background: rgba(44, 23, 51, 0.72);
+            border-radius: 6px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+        }
 
-      .single-figure-shell {
-        width: min(50vw, 420px);
-        min-width: 260px;
-        max-width: 420px;
-      }
+        .map-overlay h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
 
-      .article-grid-inner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
+        .map-overlay p {
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
 
-      .article-plot-row {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
+        .trends-layout {
+            grid-template-columns: 1fr;
+            padding: 7vh 6vw;
+        }
 
-      .article-plot-block {
-        height: 380px;
-        transform: translateY(0);
-      }
+        .trends-text-side {
+            position: relative;
+            z-index: 3;
+            min-height: 10vh; 
+            align-items: center;
+            justify-content: center;
+            padding-right: 0;
+        }
 
-      .conclusion-inner {
-        max-width: 760px;
-      }
+        .trends-visual-side {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .visual-stage {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            padding-bottom: 0;
+            padding-top: 18vh; 
+        }
+
+        .district-copy-stack {
+            position: relative;
+            width: 100%;
+            min-height: 520px; 
+        }
+
+        .single-figure-shell {
+            width: min(42vw, 260px);
+            min-width: 0;
+            max-width: 260px;
+        }
+
+        .single-figure-shell-2 {
+            width: min(78vw, 420px);
+            min-width: 0;
+            max-width: 420px;
+        }
+
+        .single-figure-shell.background-figure.revealed {
+            opacity: 0.12;
+        }
+
+        .single-figure-image {
+            opacity: 0.4;
+        }
+
+        .single-figure-image.is-fading {
+            opacity: 0.1;
+        }
+
+        .trends-heading {
+            font-size: clamp(1.6rem, 5vw, 3rem);
+        }
+
+        .overview-text {
+            font-size: 0.9rem;
+        }
+
+        .district-copy h3 {
+            font-size: clamp(1.6rem, 2.1vw, 2.4rem);
+        }
+
+        .district-copy p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .closing-question h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+        }
+
+        .closing-paragraph p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .article-grid-inner {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .article-plot-row {
+            grid-template-columns: 1fr;
+            align-items: start;
+        }
+
+        .article-plot-block {
+            height: 300px;
+            padding: 0;
+            align-items: center;
+            border-top: 1px solid rgba(239, 218, 246, 0.18);
+            padding-top: 1.15rem;
+        }
+
+        .article-plot-description {
+            border-top: none;
+            padding-top: 0rem;
+            }
+
+        .article-plot-frame iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+            overflow: hidden;
+        }
+
+        .article-block p {
+            font-size: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .article-plot-description p {
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+        .article-block-2 p {
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        .conclusion-inner {
+            max-width: 760px;
+        }
+
+        .conclusion-text h3 {
+            font-size: clamp(2rem, 3.2vw, 3.8rem);
+        }
+
+        .conclusion-text p {
+            font-size: 0.9rem;
+            line-height: 1.35;
+        }
+
+        .references-title {
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+        }
+        .references-list li {
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+        .ai-disclaimer {
+            font-size: 0.45rem;
+            line-height: 1;
+        }
+
     }
 
     @media (max-width: 700px) {
-      .hero {
-        padding: 10vh 8vw 5vh 8vw;
-      }
+        .hero {
+            padding: 10vh 8vw 5vh 8vw;
+        }
 
-      .hero p {
-        line-height: 1.7;
-      }
+        .hero p {
+            line-height: 1.7;
+        }
 
-      .scroll-indicator {
-        bottom: 28px;
-      }
+        .scroll-indicator {
+            bottom: 28px;
+        }
 
-      .district-copy h3 {
-        font-size: 2.1rem;
-      }
+        .references-list li {
+            line-height: 1.4;
+        }
 
-      .district-copy p,
-      .overview-text,
-      .closing-paragraph p,
-      .references-list li {
-        line-height: 1.7;
-      }
+        .single-figure-shell {
+            width: 58vw;
+            min-width: 230px;
+        }
+        
+        .article-plot-block {
+            height: 260px;
+        }
 
-      .single-figure-shell {
-        width: 58vw;
-        min-width: 230px;
-      }
+        .closing-sticky {
+            padding: 10vh 8vw;
+        }
 
-      .closing-sticky {
-        padding: 10vh 8vw;
-      }
+        .references-section {
+            padding: 8vh 8vw 10vh 8vw;
+        }
 
-      .references-section {
-        padding: 8vh 8vw 10vh 8vw;
-      }
-
-      .article-grid-section {
-        padding: 8vh 8vw 10vh 8vw;
-      }
+        .article-grid-section {
+            padding: 8vh 8vw 10vh 8vw;
+        }
     }
